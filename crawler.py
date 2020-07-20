@@ -1,3 +1,4 @@
+import argparse
 import unicodedata
 import urllib
 import urllib.request as req
@@ -7,7 +8,7 @@ import os
 from socket import error as SocketError
 
 
-def main():
+def main(start, end):
     try:
         path = "report"
         os.mkdir(path)
@@ -21,7 +22,8 @@ def main():
 
     result = []
     with open('report/recipes_data.json', 'w') as jsonfile:
-        for i in range(274330, 274350):
+        for i in range(start, end):
+            print("Recipe_ID: " + str(i))
             data = get_ingredients(i)
             result.append(data)
         json.dump(result, jsonfile)
@@ -123,4 +125,8 @@ def get_ingredients(recipe_ID):
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--start", help="the start index of recipe ID", type = int, default="274330", required=False)
+    parser.add_argument("-e", "--end", help="the end index of recipe ID", type = int, default="274340", required=False)
+    args = parser.parse_args()
+    main(args.start, args.end)
