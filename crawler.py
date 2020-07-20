@@ -62,14 +62,26 @@ def get_ingredients(recipe_ID):
     except SocketError as e:
         print("SOCKET ERROR")
 
-    root = bs4.BeautifulSoup(data, "html.parser")
-    image_sections = root.find_all("a", class_="ugc-photos-link")
-    name = root.find("h1", class_="headline heading-content")
-    ingredients = root.find_all("span", class_="ingredients-item-name")
-    serving_informstions = root.find_all("div", class_="recipe-meta-item")
-    nutrition_section = root.find("div", class_="partial recipe-nutrition-section")
-    nutrition_section = nutrition_section.find("div", class_="section-body")
-    nutrition_infos = nutrition_section.text.split(";")
+    try:
+        root = bs4.BeautifulSoup(data, "html.parser")
+        image_sections = root.find_all("a", class_="ugc-photos-link")
+        name = root.find("h1", class_="headline heading-content")
+        ingredients = root.find_all("span", class_="ingredients-item-name")
+        serving_informstions = root.find_all("div", class_="recipe-meta-item")
+        nutrition_section = root.find("div", class_="partial recipe-nutrition-section")
+        nutrition_section = nutrition_section.find("div", class_="section-body")
+        nutrition_infos = nutrition_section.text.split(";")
+    except:
+        with open('report/exception_recipe_ID.txt', 'a+') as f:
+            result = str(recipe_ID) + " does not have any recipe."
+            f.write(result + "\n")
+            f.close()
+        data = {}
+        data['recipe_ID'] = recipe_ID
+        data['name'] = "No recipe"
+        os.rmdir(path)
+        print("No recipe")
+        return data
 
     image_url = []
     img_index = 1
@@ -126,7 +138,8 @@ def get_ingredients(recipe_ID):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--start", help="the start index of recipe ID", type = int, default="274330", required=False)
-    parser.add_argument("-e", "--end", help="the end index of recipe ID",  type = int, default="274340", required=False)
+    parser.add_argument("-s", "--start", help="the start index of recipe ID", type=int, default="274330",
+                        required=False)
+    parser.add_argument("-e", "--end", help="the end index of recipe ID", type=int, default="274340", required=False)
     args = parser.parse_args()
     main(args.start, args.end)
