@@ -21,7 +21,7 @@ def main(start, end):
         print("the imgs folder exists in the report folder.")
 
     result = []
-    with open('report/recipes_data.json', 'w') as jsonfile:
+    with open('report/recipes_data.json', 'a+') as jsonfile:
         for i in range(start, end):
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i)
@@ -127,6 +127,6 @@ def get_ingredients(recipe_ID):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--start", help="the start index of recipe ID", type = int, default="274330", required=False)
-    parser.add_argument("-e", "--end", help="the end index of recipe ID", type = int, default="274340", required=False)
+    parser.add_argument("-e", "--end", help="the end index of recipe ID",  type = int, default="274340", required=False)
     args = parser.parse_args()
     main(args.start, args.end)
