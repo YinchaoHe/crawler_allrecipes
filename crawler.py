@@ -20,13 +20,12 @@ def main(start, end):
     except:
         print("the imgs folder exists in the report folder.")
 
-    result = []
-    with open('report/recipes_data.json', 'a+') as jsonfile:
+    with open('report/recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
         for i in range(start, end):
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i)
-            result.append(data)
-        json.dump(result, jsonfile)
+            json.dump(data, jsonfile, ensure_ascii=False)
+            jsonfile.write(',')
 
 
 def get_ingredients(recipe_ID):
