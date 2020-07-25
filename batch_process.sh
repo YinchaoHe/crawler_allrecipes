@@ -1,4 +1,5 @@
 #!/bin/bash
+#This script is use to split a big scraping processing into several small scraping tasks.
 echo "Please enter start recipe_ID and end recipe_ID -> "
 read start end
 if [[ "$start" =~ ^-?[0-9]+$ ]]; then
