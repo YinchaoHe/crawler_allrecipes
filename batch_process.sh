@@ -5,7 +5,7 @@ read start end
 if [[ "$start" =~ ^-?[0-9]+$ ]]; then
 	if [[ "$end" =~ ^-?[0-9]+$ ]];then
 		interval=`expr $end  - $start`
-		while [ "$interval" -gt 10 ]; do
+		while [ "$interval" -gt 1000 ]; do
 			interval=$(($interval / 2))
 		done
 		prestopsign=$start
