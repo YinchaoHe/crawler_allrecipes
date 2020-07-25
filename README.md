@@ -1,5 +1,5 @@
 # Crawler_allrecipes
-This web crawler is only used for `https://www.allrecipes.com/ `.
+This web crawler is only used for https://www.allrecipes.com/ .
 
 ## Description
 - report_example: there are some example output files in the folder, such as images and recipes' information.
