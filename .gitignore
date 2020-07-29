@@ -1,3 +1,4 @@
 *.idea
 dbg
 report/
+venv/
