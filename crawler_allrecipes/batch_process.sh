@@ -1,7 +1,7 @@
 #!/bin/bash
 #This script is use to split a big scraping processing into several small scraping tasks.
-echo "Please enter start recipe_ID and end recipe_ID -> "
-read start end
+echo "Please enter start recipe_ID, end recipe_ID, and index-> "
+read start end index
 if [[ "$start" =~ ^-?[0-9]+$ ]]; then
 	if [[ "$end" =~ ^-?[0-9]+$ ]];then
 		interval=`expr $end  - $start`
@@ -11,9 +11,10 @@ if [[ "$start" =~ ^-?[0-9]+$ ]]; then
 		prestopsign=$start
 		stopsign=$(($start + $interval))
 		while [ $stopsign -le $end ]; do			
-			python crawler.py -s $prestopsign -e $stopsign
+			python crawler.py -s $prestopsign -e $stopsign -i $index
 			prestopsign=$stopsign
 			stopsign=$(($prestopsign + $interval))
+			index=$(($index + 1))
 		done
 		if [ $prestopsign -lt $end ];then
 			python crawler.py -s $prestopsign -e $end
