@@ -2,26 +2,17 @@
 #This script is use to split a big scraping processing into several small scraping tasks.
 echo "Please enter start recipe_ID, end recipe_ID, and index-> "
 read start end index
-if [[ "$start" =~ ^-?[0-9]+$ ]]; then
-	if [[ "$end" =~ ^-?[0-9]+$ ]];then
-		interval=`expr $end  - $start`
-		while [ "$interval" -gt 1000 ]; do
-			interval=$(($interval / 2))
-		done
-		prestopsign=$start
-		stopsign=$(($start + $interval))
-		while [ $stopsign -le $end ]; do			
-			python crawler.py -s $prestopsign -e $stopsign -i $index
-			prestopsign=$stopsign
-			stopsign=$(($prestopsign + $interval))
-			index=$(($index + 1))
-		done
-		if [ $prestopsign -lt $end ];then
-			python crawler.py -s $prestopsign -e $end
-		fi
-	else
-		echo "please enter the end recipe_ID"
-	fi
-else
-	echo "please enter the start recipe_ID"
-fi
+
+interval=`expr $end  - $start`
+while [ "$interval" -gt 1000 ]; do
+  interval=$(($interval / 2))
+done
+prestopsign=$start
+stopsign=$(($start + $interval))
+while [ $stopsign -le $end ]; do
+  python crawler.py -s $prestopsign -e $stopsign -i $index
+  prestopsign=$stopsign
+  stopsign=$(($prestopsign + $interval))
+  index=$(($index + 1))
+done
+
