@@ -19,7 +19,7 @@ def filter_recipe(start, end):
 def integration(start, end):
     index = start
     amount = 0
-    new_index = 20
+    new_index = 32
     while index < end:  # index of the last file
         with open('new_report/' + str(new_index) + '_recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
             if amount == 0:
@@ -52,8 +52,10 @@ def reader(index):
 
 def main():
     #filter_recipe(1, 10)
-    #integration(1, 10)
-    reader(1)
+    integration(32, 41)
+    for i in range(33, 41):
+        print(i)
+        reader(32)
 
 
 if __name__ == '__main__':
