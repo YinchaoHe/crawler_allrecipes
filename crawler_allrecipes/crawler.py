@@ -20,15 +20,25 @@ def crawler_allrecipes(start, end, index):
     except:
         print("the imgs folder exists in the report folder.")
 
-    with open('report/' + str(index) + '_recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
-        jsonfile.write('[')
+    try:
+        path = "report/original_recipes_info"
+        os.mkdir(path)
+    except:
+        print("the imgs folder exists in the report folder.")
+
+    with open('report/original_recipes_info/' + str(index) + '_recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
+        #jsonfile.write('[')
+        recipes = []
         for i in range(start, end):
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i)
+            # if data['name'] != 'No recipe':
+            #     json.dump(data, jsonfile, ensure_ascii=False)
+            #     jsonfile.write(',')
             if data['name'] != 'No recipe':
-                json.dump(data, jsonfile, ensure_ascii=False)
-                jsonfile.write(',')
-        jsonfile.write(']')
+                recipes.append(data)
+        json.dump(recipes, jsonfile, ensure_ascii=False)
+        #jsonfile.write(']')
 
 
 def get_ingredients(recipe_ID):
@@ -136,14 +146,16 @@ def get_ingredients(recipe_ID):
     data['serving_information'] = serving
     return data
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--start", help="the start index of recipe ID", type=int, default="10000",
                         required=False)
-    parser.add_argument("-e", "--end", help="the end index of recipe ID", type=int, default="10001", required=False)
+    parser.add_argument("-e", "--end", help="the end index of recipe ID", type=int, default="10005", required=False)
     parser.add_argument("-i", "--index", help="the index of recipe json file", default="1", type=int, required=False)
     args = parser.parse_args()
     crawler_allrecipes(args.start, args.end, args.index)
+
 
 if __name__ == '__main__':
     main()
