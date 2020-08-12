@@ -45,7 +45,7 @@ def integration(start, end, number):
 
 #read json file
 def reader(index):
-    with open('report/' + str(index) + '_recipes_data.json', 'r') as f:
+    with open('report/original_recipes_info/' + str(index) + '_recipes_data.json', 'r') as f:
         data = json.load(f)
         for i in range(0, len(data)):
             print(data[i])
@@ -65,6 +65,7 @@ def main():
         integration(args.start, args.end, args.index)
     elif args.function == "read":
         for i in (args.start, args.end):
+            print(i)
             reader(i)
     else:
         print("only three funtions: filt, integrate, read")
