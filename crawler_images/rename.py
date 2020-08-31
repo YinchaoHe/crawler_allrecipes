@@ -1,8 +1,11 @@
 import os
-
+import argparse
 
 def main():
-    ingredient_type = 'multi_raw_chickens'
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-n", "--name", help="image folder name", type=str, default= 'rose', required=False)
+    args = parser.parse_args()
+    ingredient_type = args.name
     if 'multi' in ingredient_type:
         path = "images/" + ingredient_type
         filelist = os.listdir(path)
