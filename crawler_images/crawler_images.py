@@ -20,12 +20,16 @@ def main():
     except:
         print("the images folder exists in the current directory.")
     parser = argparse.ArgumentParser()
-    parser.add_argument("-k", "--keywords", help="keywords for search, please no space", type=str, required=True)
-    parser.add_argument("-l", "--limit", help="the amount of images", type=int, required=True)
-    parser.add_argument("-c", "--chromedriver", help="chromedriver", type=str, default="/home/yche/chromedriver", required=False)
-    parser.add_argument("-d", "--image_directory", help="image_directory", type=str, default="rose", required=True)
+    parser.add_argument("-k", "--keywords", help="keywords for search, please no space", type=str, default= 'rose', required=False)
+    parser.add_argument("-l", "--limit", help="the amount of images", type=int, default=3000, required=False)
+    parser.add_argument("-c", "--chromedriver", help="chromedriver", type=str, default="/Users/yinchaohe/Downloads/chromedriver", required=False)
+    parser.add_argument("-d", "--image_directory", help="image_directory", type=str, default="rose", required=False)
     args = parser.parse_args()
-    crawler_images(args)
-    
+    keywords = [ 'corn', 'tomatoes', 'potatoes', 'broccoli', 'carrot', 'lettuce', 'onion', 'spinach', 'cabbage', 'garlic', 'cauliflower']
+    for keyword in keywords:
+        args.keywords =  keyword
+        args.image_directory = keyword
+        crawler_images(args)
+
 if __name__ == '__main__':
     main()
