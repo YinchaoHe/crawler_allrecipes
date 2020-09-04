@@ -10,7 +10,7 @@ done
 prestopsign=$start
 stopsign=$(($start + $interval))
 while [ $stopsign -le $end ]; do
-  python crawler.py -s $prestopsign -e $stopsign -i $index
+  python crawler_by_id.py -s $prestopsign -e $stopsign -i $index
   prestopsign=$stopsign
   stopsign=$(($prestopsign + $interval))
   index=$(($index + 1))

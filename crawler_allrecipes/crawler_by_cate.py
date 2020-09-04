@@ -13,6 +13,7 @@ def main():
 
 def preprocess(pagenumber):
     print(pagenumber)
+    recipe_type = 'mexican_recipe'
     try:
         url = "https://www.allrecipes.com/recipes/728/world-cuisine/latin-american/mexican/?page=" + str(pagenumber)
         request = req.Request(url, headers={
@@ -48,35 +49,35 @@ def preprocess(pagenumber):
             recipe_id = url.split('/recipe/')[1]
             recipe_id = recipe_id.split('/')[0]
             recipe_ids.append(recipe_id)
-        crawler_allrecipes(recipe_ids, pagenumber)
+        crawler_allrecipes(recipe_ids, pagenumber, recipe_type)
 
     except:
         print('error')
 
-def crawler_allrecipes(recipe_ids, index):
+def crawler_allrecipes(recipe_ids, index, recipe_type):
     try:
-        path = "report"
+        path = recipe_type #"report"
         os.mkdir(path)
     except:
-        print("the report folder exists in the current directory.")
+        print("the recipe_type folder exists in the current directory.")
     try:
-        path = "report/imgs"
-        os.mkdir(path)
-    except:
-        print("the imgs folder exists in the report folder.")
-
-    try:
-        path = "report/original_recipes_info"
+        path = recipe_type + '/imgs'  # "report/imgs"
         os.mkdir(path)
     except:
         print("the imgs folder exists in the report folder.")
 
-    with open('report/original_recipes_info/' + str(index) + '_recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
+    try:
+        path = recipe_type + '/original_recipes_info' # "report/original_recipes_info"
+        os.mkdir(path)
+    except:
+        print("the imgs folder exists in the report folder.")
+
+    with open( recipe_type + '/original_recipes_info/' + str(index) + '_recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
         #jsonfile.write('[')
         recipes = []
         for i in recipe_ids:
             print("Recipe_ID: " + str(i))
-            data = get_ingredients(i)
+            data = get_ingredients(i, recipe_type)
             # if data['name'] != 'No recipe':
             #     json.dump(data, jsonfile, ensure_ascii=False)
             #     jsonfile.write(',')
@@ -85,9 +86,9 @@ def crawler_allrecipes(recipe_ids, index):
         json.dump(recipes, jsonfile, ensure_ascii=False)
         #jsonfile.write(']')
 
-def get_ingredients(recipe_ID):
+def get_ingredients(recipe_ID, recipe_type):
     try:
-        path = "report/imgs/" + str(recipe_ID)
+        path = recipe_type + "/imgs/" + str(recipe_ID)
         os.mkdir(path)
     except:
         print("the recipe was scraped before.")
@@ -102,7 +103,7 @@ def get_ingredients(recipe_ID):
             data = response.read().decode("utf-8")
 
     except urllib.error.HTTPError as e:
-        with open('report/exception_recipe_ID.txt', 'a+') as f:
+        with open( recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(recipe_ID) + " does not have any recipe."
             f.write(result + "\n")
             f.close()
@@ -128,7 +129,7 @@ def get_ingredients(recipe_ID):
         nutrition_section = nutrition_section.find("div", class_="section-body")
         nutrition_infos = nutrition_section.text.split(";")
     except:
-        with open('report/exception_recipe_ID.txt', 'a+') as f:
+        with open( recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(recipe_ID) + " does not have any recipe."
             f.write(result + "\n")
             f.close()
@@ -152,7 +153,7 @@ def get_ingredients(recipe_ID):
         except:
             continue
     if img_index == 1:
-        with open('report/exception_recipe_ID.txt', 'a+') as f:
+        with open( recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(recipe_ID) + " has recipe but does not have any IMGS."
             f.write(result + "\n")
             f.close()
