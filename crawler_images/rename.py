@@ -6,6 +6,7 @@ def main():
     parser.add_argument("-n", "--name", help="image folder name", type=str, default= 'rose', required=False)
     args = parser.parse_args()
     ingredient_type = args.name
+    ingredient_type = ['basil+fresh']
     if 'multi' in ingredient_type:
         path = "images/" + ingredient_type
         filelist = os.listdir(path)
@@ -15,7 +16,8 @@ def main():
             except:
                 print("No this folder")
     else:
-        rename_sig_in(ingredient_type)
+        for ingredient in ingredient_type:
+            rename_sig_in(ingredient)
 
 def rename_multi_in(ingredient_type, subtype):
     path= "images/" + ingredient_type +'/' + subtype
@@ -26,6 +28,10 @@ def rename_multi_in(ingredient_type, subtype):
     count=0
     filelist=os.listdir(path)
     for files in filelist:
+        if 'jpg' in files:
+            fileType = '.jpg'
+        elif 'png' in files:
+            fileType = '.png'
         Olddir=os.path.join(path,files)
         if os.path.isdir(Olddir):
             continue

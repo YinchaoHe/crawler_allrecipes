@@ -23,7 +23,7 @@ def preprocess(pagenumber):
             data = response.read().decode("utf-8")
 
     except urllib.error.HTTPError as e:
-        with open('report/exception_recipe_ID.txt', 'a+') as f:
+        with open(recipe_type+ '/exception_recipe_ID.txt', 'a+') as f:
             result = str(1) + " does not have any recipe."
             f.write(result + "\n")
             f.close()
