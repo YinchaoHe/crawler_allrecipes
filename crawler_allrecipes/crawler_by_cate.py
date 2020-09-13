@@ -36,7 +36,7 @@ def main():
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
         recipe_type = country + '/' +recipe_info
-        for i in range(8, 10):
+        for i in range(1, 101):
             recipe_ids  = preprocess(i, recipe_type, url)
             if len(recipe_ids) == 0:
                 print("This page is empty")
