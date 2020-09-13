@@ -117,7 +117,6 @@ def crawler_allrecipes(recipe_ids, index, recipe_type):
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i, recipe_type)
             data['nutrition'] = get_all_nutrition(data)
-            print(data)
 
             # if data['name'] != 'No recipe':
             #     json.dump(data, jsonfile, ensure_ascii=False)
