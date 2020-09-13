@@ -36,7 +36,7 @@ def main():
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
         recipe_type = country + '/' +recipe_info
-        for i in range(1, 101):
+        for i in range(8, 10):
             recipe_ids  = preprocess(i, recipe_type, url)
             if len(recipe_ids) == 0:
                 print("This page is empty")
@@ -116,12 +116,14 @@ def crawler_allrecipes(recipe_ids, index, recipe_type):
         for i in recipe_ids:
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i, recipe_type)
-            data['nutrition'] = get_all_nutrition(data)
+        
+
 
             # if data['name'] != 'No recipe':
             #     json.dump(data, jsonfile, ensure_ascii=False)
             #     jsonfile.write(',')
             if data['name'] != 'No recipe':
+                data['nutrition'] = get_all_nutrition(data)
                 recipes.append(data)
         json.dump(recipes, jsonfile, ensure_ascii=False)
         # jsonfile.write(']')
@@ -133,7 +135,10 @@ def get_ingredients(recipe_ID, recipe_type):
         os.mkdir(path)
     except:
         print("the recipe was scraped before.")
-        return
+        data = {}
+        data['recipe_ID'] = recipe_ID
+        data['name'] = "No recipe"
+        return data
 
     try:
         url = "https://www.allrecipes.com/recipe/" + str(recipe_ID)
@@ -244,8 +249,11 @@ def get_all_nutrition(data):
         request = req.Request(url, headers={
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
         })
-        with req.urlopen(url) as response:
-            data = response.read().decode("utf-8")
+        try:
+            with req.urlopen(url) as response:
+                data = response.read().decode("utf-8")
+        except:
+            return nutrition
     except urllib.error.URLError as e:
         print("URL ERROR")
         print(e.reason)
