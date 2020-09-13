@@ -7,15 +7,48 @@ import json
 import os
 from socket import error as SocketError
 
-def main():
-    for i in range(1, 101):
-        preprocess(i)
 
-def preprocess(pagenumber):
-    print(pagenumber)
-    recipe_type = 'mexican_recipe'
+def main():
     try:
-        url = "https://www.allrecipes.com/recipes/728/world-cuisine/latin-american/mexican/?page=" + str(pagenumber)
+        country = 'Mexican'
+        os.mkdir(country)
+    except:
+        print("the recipe_type folder exists in the current directory.")
+
+    recipe_infos = {'MexicanAppetizer': 'https://www.allrecipes.com/recipes/1214/world-cuisine/latin-american/mexican/appetizers/',
+                   'MexicanMainDish':'https://www.allrecipes.com/recipes/17504/world-cuisine/latin-american/mexican/main-dishes/',
+                   'MexicanDrinks':'https://www.allrecipes.com/recipes/15936/world-cuisine/latin-american/mexican/drinks/',
+                   'MexicanDessert':'https://www.allrecipes.com/recipes/1217/world-cuisine/latin-american/mexican/desserts/',
+                   'MexicanSideDish':'https://www.allrecipes.com/recipes/1526/world-cuisine/latin-american/mexican/side-dishes/',
+                   'MexicanSalad':'https://www.allrecipes.com/recipes/17513/world-cuisine/latin-american/mexican/salads/',
+                   'MexicanSlowCooker':'https://www.allrecipes.com/recipes/16334/everyday-cooking/slow-cooker/mexican/',
+                   'MexicanBread':'https://www.allrecipes.com/recipes/1525/world-cuisine/latin-american/mexican/bread/',
+                   'MexicanBurrito':'https://www.allrecipes.com/recipes/1216/world-cuisine/latin-american/mexican/main-dishes/burritos/',
+                   'MexicanChileRelleno':'https://www.allrecipes.com/recipes/16085/world-cuisine/latin-american/mexican/main-dishes/chile-rellenos/',
+                   'MexicanEnchilada':'https://www.allrecipes.com/recipes/1218/world-cuisine/latin-american/mexican/main-dishes/enchiladas/',
+                    'MexicanFajita':'https://www.allrecipes.com/recipes/1220/world-cuisine/latin-american/mexican/main-dishes/fajitas/',
+                    'MexicanTaco':'https://www.allrecipes.com/recipes/1219/world-cuisine/latin-american/mexican/main-dishes/tacos/',
+                    'MexicanFishTaco':'https://www.allrecipes.com/recipes/16562/world-cuisine/latin-american/mexican/main-dishes/tacos/fish/',
+                    'MexicanRice':'https://www.allrecipes.com/recipes/16082/world-cuisine/latin-american/mexican/side-dishes/rice/',
+                    'MexicanSoupsandStews':'https://www.allrecipes.com/recipes/1215/world-cuisine/latin-american/mexican/soups-and-stews/',
+                    'MexicanQuesadilla':'https://www.allrecipes.com/recipes/1905/world-cuisine/latin-american/mexican/main-dishes/quesadillas/'
+    }
+    for recipe_info in recipe_infos.keys():
+        url = recipe_infos[recipe_info]
+        recipe_type = country + '/' +recipe_info
+        for i in range(1, 101):
+            recipe_ids  = preprocess(i, recipe_type, url)
+            if len(recipe_ids) == 0:
+                print("This page is empty")
+                break
+            else:
+                crawler_allrecipes(recipe_ids, i, recipe_type)
+
+
+def preprocess(pagenumber, recipe_type, url):
+    print(pagenumber)
+    try:
+        url = url + '?page=' + str(pagenumber)
         request = req.Request(url, headers={
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
         })
@@ -23,20 +56,21 @@ def preprocess(pagenumber):
             data = response.read().decode("utf-8")
 
     except urllib.error.HTTPError as e:
-        with open(recipe_type+ '/exception_recipe_ID.txt', 'a+') as f:
+        with open(recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(1) + " does not have any recipe."
             f.write(result + "\n")
             f.close()
-        data = {}
-        data['recipe_ID'] = 1
-        data['name'] = "No recipe"
-        print("No recipe")
-        return data
+        recipe_ids = []
+        return recipe_ids
     except urllib.error.URLError as e:
         print("URL ERROR")
         print(e.reason)
+        recipe_ids = []
+        return recipe_ids
     except SocketError as e:
         print("SOCKET ERROR")
+        recipe_ids = []
+        return recipe_ids
 
     try:
         root = bs4.BeautifulSoup(data, "html.parser")
@@ -49,14 +83,17 @@ def preprocess(pagenumber):
             recipe_id = url.split('/recipe/')[1]
             recipe_id = recipe_id.split('/')[0]
             recipe_ids.append(recipe_id)
-        crawler_allrecipes(recipe_ids, pagenumber, recipe_type)
+        return recipe_ids
+
 
     except:
-        print('error')
+        recipe_ids = []
+        return recipe_ids
+
 
 def crawler_allrecipes(recipe_ids, index, recipe_type):
     try:
-        path = recipe_type #"report"
+        path = recipe_type  # "report"
         os.mkdir(path)
     except:
         print("the recipe_type folder exists in the current directory.")
@@ -67,24 +104,29 @@ def crawler_allrecipes(recipe_ids, index, recipe_type):
         print("the imgs folder exists in the report folder.")
 
     try:
-        path = recipe_type + '/original_recipes_info' # "report/original_recipes_info"
+        path = recipe_type + '/original_recipes_info'  # "report/original_recipes_info"
         os.mkdir(path)
     except:
         print("the imgs folder exists in the report folder.")
 
-    with open( recipe_type + '/original_recipes_info/' + str(index) + '_recipes_data.json', 'a+', encoding='utf-8') as jsonfile:
-        #jsonfile.write('[')
+    with open(recipe_type + '/original_recipes_info/' + str(index) + '_recipes_data.json', 'a+',
+              encoding='utf-8') as jsonfile:
+        # jsonfile.write('[')
         recipes = []
         for i in recipe_ids:
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i, recipe_type)
+            data['nutrition'] = get_all_nutrition(data)
+            print(data)
+
             # if data['name'] != 'No recipe':
             #     json.dump(data, jsonfile, ensure_ascii=False)
             #     jsonfile.write(',')
             if data['name'] != 'No recipe':
                 recipes.append(data)
         json.dump(recipes, jsonfile, ensure_ascii=False)
-        #jsonfile.write(']')
+        # jsonfile.write(']')
+
 
 def get_ingredients(recipe_ID, recipe_type):
     try:
@@ -103,7 +145,7 @@ def get_ingredients(recipe_ID, recipe_type):
             data = response.read().decode("utf-8")
 
     except urllib.error.HTTPError as e:
-        with open( recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
+        with open(recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(recipe_ID) + " does not have any recipe."
             f.write(result + "\n")
             f.close()
@@ -125,11 +167,11 @@ def get_ingredients(recipe_ID, recipe_type):
         name = root.find("h1", class_="headline heading-content")
         ingredients = root.find_all("span", class_="ingredients-item-name")
         serving_informstions = root.find_all("div", class_="recipe-meta-item")
-        nutrition_section = root.find("div", class_="partial recipe-nutrition-section")
-        nutrition_section = nutrition_section.find("div", class_="section-body")
-        nutrition_infos = nutrition_section.text.split(";")
+        # nutrition_section = root.find("div", class_="partial recipe-nutrition-section")
+        # nutrition_section = nutrition_section.find("div", class_="section-body")
+        # nutrition_infos = nutrition_section.text.split(";")
     except:
-        with open( recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
+        with open(recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(recipe_ID) + " does not have any recipe."
             f.write(result + "\n")
             f.close()
@@ -153,16 +195,16 @@ def get_ingredients(recipe_ID, recipe_type):
         except:
             continue
     if img_index == 1:
-        with open( recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
+        with open(recipe_type + '/exception_recipe_ID.txt', 'a+') as f:
             result = str(recipe_ID) + " has recipe but does not have any IMGS."
             f.write(result + "\n")
             f.close()
 
-    nutrition = []
-    for nutrition_info in nutrition_infos:
-        nutrition_info = nutrition_info.strip() + ";"
-        nutrition_info = nutrition_info.replace(".        Full Nutrition;", "")
-        nutrition.append(nutrition_info)
+    # nutrition = []
+    # for nutrition_info in nutrition_infos:
+    #     nutrition_info = nutrition_info.strip() + ";"
+    #     nutrition_info = nutrition_info.replace(".        Full Nutrition;", "")
+    #     nutrition.append(nutrition_info)
 
     array_ingredients = []
     for ingredient in ingredients:
@@ -183,13 +225,50 @@ def get_ingredients(recipe_ID, recipe_type):
                 info += desc_serving_info
         serving.append(info)
 
+    #nutrition = get_all_nutrition(name.string)
     data = {}
     data['recipe_ID'] = recipe_ID
     data['name'] = name.string
     data['ingredients'] = array_ingredients
-    data['nutrition_perServing'] = nutrition
+    #data['nutrition_perServing'] = nutrition
     data['serving_information'] = serving
     return data
+
+
+def get_all_nutrition(data):
+    nutrition = {}
+    try:
+        name = data['name'].lower()
+        name = name.replace(" ", "-")
+
+        url = "https://www.allrecipes.com/recipe/" + str(data['recipe_ID']) + "/" + name + "/fullrecipenutrition/"
+        request = req.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+        })
+        with req.urlopen(url) as response:
+            data = response.read().decode("utf-8")
+    except urllib.error.URLError as e:
+        print("URL ERROR")
+        print(e.reason)
+    except SocketError as e:
+        print("SOCKET ERROR")
+
+    try:
+        root = bs4.BeautifulSoup(data, "html.parser")
+        nutrition_divs = root.find_all("div", class_="nutrition-row")
+        for nutrition_div in nutrition_divs:
+            nutrient = nutrition_div.find("span", class_="nutrient-name")
+            nutrient = nutrient.text.split(':')
+            dv = ''
+            if (nutrition_div.find("span", class_="daily-value")):
+                dv = nutrition_div.find("span", class_="daily-value")
+                dv = ' DV:' + dv.text.replace(' ', '')
+            nutrition[nutrient[0]] = nutrient[1].strip() + dv
+        return nutrition
+
+    except:
+        print('nutrition error')
+
 
 
 if __name__ == '__main__':
