@@ -36,7 +36,7 @@ def main():
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
         recipe_type = country + '/' +recipe_info
-        for i in range(1, 101):
+        for i in range(16, 101):
             recipe_ids  = preprocess(i, recipe_type, url)
             if len(recipe_ids) == 0:
                 print("This page is empty")
@@ -116,7 +116,7 @@ def crawler_allrecipes(recipe_ids, index, recipe_type):
         for i in recipe_ids:
             print("Recipe_ID: " + str(i))
             data = get_ingredients(i, recipe_type)
-        
+
 
 
             # if data['name'] != 'No recipe':
@@ -230,13 +230,18 @@ def get_ingredients(recipe_ID, recipe_type):
         serving.append(info)
 
     #nutrition = get_all_nutrition(name.string)
-    data = {}
-    data['recipe_ID'] = recipe_ID
-    data['name'] = name.string
-    data['ingredients'] = array_ingredients
-    #data['nutrition_perServing'] = nutrition
-    data['serving_information'] = serving
-    return data
+    try:
+        data = {}
+        data['recipe_ID'] = recipe_ID
+        data['name'] = name.string
+        data['ingredients'] = array_ingredients
+        #data['nutrition_perServing'] = nutrition
+        data['serving_information'] = serving
+        return data
+    except:
+        data['name'] = "No recipe"
+        return data
+
 
 
 def get_all_nutrition(data):
