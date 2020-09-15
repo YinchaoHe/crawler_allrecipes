@@ -6,6 +6,7 @@ import bs4
 import json
 import os
 from socket import error as SocketError
+import time
 import logging
 
 def main():
@@ -123,6 +124,7 @@ def crawler_allrecipes(recipe_ids, index, recipe_type):
             if data['name'] != 'No recipe':
                 data['nutrition'] = get_all_nutrition(data)
                 recipes.append(data)
+            time.sleep(3)
         json.dump(recipes, jsonfile, ensure_ascii=False)
         # jsonfile.write(']')
 
