@@ -6,37 +6,35 @@ import bs4
 import json
 import os
 from socket import error as SocketError
-
+import logging
 
 def main():
     try:
-        country = 'Mexican'
+        country = 'Italian'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
-    recipe_infos = {'MexicanAppetizer': 'https://www.allrecipes.com/recipes/1214/world-cuisine/latin-american/mexican/appetizers/',
-                   'MexicanMainDish':'https://www.allrecipes.com/recipes/17504/world-cuisine/latin-american/mexican/main-dishes/',
-                   'MexicanDrinks':'https://www.allrecipes.com/recipes/15936/world-cuisine/latin-american/mexican/drinks/',
-                   'MexicanDessert':'https://www.allrecipes.com/recipes/1217/world-cuisine/latin-american/mexican/desserts/',
-                   'MexicanSideDish':'https://www.allrecipes.com/recipes/1526/world-cuisine/latin-american/mexican/side-dishes/',
-                   'MexicanSalad':'https://www.allrecipes.com/recipes/17513/world-cuisine/latin-american/mexican/salads/',
-                   'MexicanSlowCooker':'https://www.allrecipes.com/recipes/16334/everyday-cooking/slow-cooker/mexican/',
-                   'MexicanBread':'https://www.allrecipes.com/recipes/1525/world-cuisine/latin-american/mexican/bread/',
-                   'MexicanBurrito':'https://www.allrecipes.com/recipes/1216/world-cuisine/latin-american/mexican/main-dishes/burritos/',
-                   'MexicanChileRelleno':'https://www.allrecipes.com/recipes/16085/world-cuisine/latin-american/mexican/main-dishes/chile-rellenos/',
-                   'MexicanEnchilada':'https://www.allrecipes.com/recipes/1218/world-cuisine/latin-american/mexican/main-dishes/enchiladas/',
-                    'MexicanFajita':'https://www.allrecipes.com/recipes/1220/world-cuisine/latin-american/mexican/main-dishes/fajitas/',
-                    'MexicanTaco':'https://www.allrecipes.com/recipes/1219/world-cuisine/latin-american/mexican/main-dishes/tacos/',
-                    'MexicanFishTaco':'https://www.allrecipes.com/recipes/16562/world-cuisine/latin-american/mexican/main-dishes/tacos/fish/',
-                    'MexicanRice':'https://www.allrecipes.com/recipes/16082/world-cuisine/latin-american/mexican/side-dishes/rice/',
-                    'MexicanSoupsandStews':'https://www.allrecipes.com/recipes/1215/world-cuisine/latin-american/mexican/soups-and-stews/',
-                    'MexicanQuesadilla':'https://www.allrecipes.com/recipes/1905/world-cuisine/latin-american/mexican/main-dishes/quesadillas/'
+    recipe_infos = {
+                   'ItalianAppetizer': 'https://www.allrecipes.com/recipes/1793/world-cuisine/european/italian/appetizers/',
+                   'ItalianBread':'https://www.allrecipes.com/recipes/1798/world-cuisine/european/italian/bread/',
+                   'MexicanDrinks':'https://www.allrecipes.com/recipes/17551/world-cuisine/european/italian/drinks/',
+                   'ItalianDessert':'https://www.allrecipes.com/recipes/1791/world-cuisine/european/italian/desserts/',
+                   'ItalianMainDish':'https://www.allrecipes.com/recipes/16767/world-cuisine/european/italian/main-dishes/',
+                   'ItalianSalad':'https://www.allrecipes.com/recipes/1800/world-cuisine/european/italian/salads/',
+                   'ItalianSideDish':'https://www.allrecipes.com/recipes/1792/world-cuisine/european/italian/side-dishes/',
+                   'ItalianSoupsandStews':'https://www.allrecipes.com/recipes/1790/world-cuisine/european/italian/soups-and-stews/',
+                   'ItalianAuthentic':'https://www.allrecipes.com/recipes/1789/world-cuisine/european/italian/authentic/',
+                   'ItalianLasagna':'https://www.allrecipes.com/recipes/502/main-dish/pasta/lasagna/',
+                   'ItalianSpaghetti':'https://www.allrecipes.com/recipes/505/main-dish/pasta/spaghetti/',
+                   'ItalianPizza':'https://www.allrecipes.com/recipes/250/main-dish/pizza/',
+                    'ItalianCalzone':'https://www.allrecipes.com/recipes/1045/main-dish/calzones/',
+
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
         recipe_type = country + '/' +recipe_info
-        for i in range(16, 101):
+        for i in range(1, 101):
             recipe_ids  = preprocess(i, recipe_type, url)
             if len(recipe_ids) == 0:
                 print("This page is empty")
