@@ -17,19 +17,14 @@ def main():
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
-                   'ItalianAppetizer': 'https://www.allrecipes.com/recipes/1793/world-cuisine/european/italian/appetizers/',
-                   'ItalianBread':'https://www.allrecipes.com/recipes/1798/world-cuisine/european/italian/bread/',
-                   'MexicanDrinks':'https://www.allrecipes.com/recipes/17551/world-cuisine/european/italian/drinks/',
-                   'ItalianDessert':'https://www.allrecipes.com/recipes/1791/world-cuisine/european/italian/desserts/',
-                   'ItalianMainDish':'https://www.allrecipes.com/recipes/16767/world-cuisine/european/italian/main-dishes/',
-                   'ItalianSalad':'https://www.allrecipes.com/recipes/1800/world-cuisine/european/italian/salads/',
-                   'ItalianSideDish':'https://www.allrecipes.com/recipes/1792/world-cuisine/european/italian/side-dishes/',
-                   'ItalianSoupsandStews':'https://www.allrecipes.com/recipes/1790/world-cuisine/european/italian/soups-and-stews/',
-                   'ItalianAuthentic':'https://www.allrecipes.com/recipes/1789/world-cuisine/european/italian/authentic/',
-                   'ItalianLasagna':'https://www.allrecipes.com/recipes/502/main-dish/pasta/lasagna/',
-                   'ItalianSpaghetti':'https://www.allrecipes.com/recipes/505/main-dish/pasta/spaghetti/',
-                   'ItalianPizza':'https://www.allrecipes.com/recipes/250/main-dish/pizza/',
-                    'ItalianCalzone':'https://www.allrecipes.com/recipes/1045/main-dish/calzones/',
+                   'ChineseAppetizer': 'https://www.allrecipes.com/recipes/1899/world-cuisine/asian/chinese/appetizers/',
+                   #'ChineseMainDish':'https://www.allrecipes.com/recipes/17135/world-cuisine/asian/chinese/main-dishes/',
+                   'ChineseBeefMainDish':'https://www.allrecipes.com/recipes/22838/world-cuisine/asian/chinese/main-dishes/beef/',
+                   'ChineseChickenMainDish':'https://www.allrecipes.com/recipes/1902/world-cuisine/asian/chinese/main-dishes/chicken/',
+                   'ChinesePorkMainDish':'https://www.allrecipes.com/recipes/1901/world-cuisine/asian/chinese/main-dishes/pork/',
+                   'ChineseSeafoodMainDish':'https://www.allrecipes.com/recipes/1903/world-cuisine/asian/chinese/main-dishes/seafood/',
+                   'ChineseSoupsandStews':'https://www.allrecipes.com/recipes/1900/world-cuisine/asian/chinese/soups-and-stews/',
+                   'ChineseStir-Fry':'https://www.allrecipes.com/recipes/259/main-dish/stir-fry/',
 
     }
     for recipe_info in recipe_infos.keys():
