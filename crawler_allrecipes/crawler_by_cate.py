@@ -11,19 +11,17 @@ import logging
 
 def main():
     try:
-        country = 'IndianRecipes'
+        country = 'ThaiRecipes'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
-                   'IndianAppetizer': 'https://www.allrecipes.com/recipes/1874/world-cuisine/asian/indian/appetizers/',
-                   'IndianBread':'https://www.allrecipes.com/recipes/1876/world-cuisine/asian/indian/bread/',
-                   'IndianDessert':'https://www.allrecipes.com/recipes/1879/world-cuisine/asian/indian/desserts/',
-                   'IndianDrinks':'https://www.allrecipes.com/recipes/15935/world-cuisine/asian/indian/drinks/',
-                   'IndianMainDish':'https://www.allrecipes.com/recipes/17136/world-cuisine/asian/indian/main-dishes/',
-                   'IndianSideDish':'https://www.allrecipes.com/recipes/1877/world-cuisine/asian/indian/side-dishes/',
-
+                   'ThaiAppetizer': 'https://www.allrecipes.com/recipes/1894/world-cuisine/asian/thai/appetizers/',
+                   'ThaiMainDish':'https://www.allrecipes.com/recipes/17137/world-cuisine/asian/thai/main-dishes/',
+                   'ThaiPad':'https://www.allrecipes.com/recipes/17825/world-cuisine/asian/thai/main-dishes/pad-thai/',
+                   'ThaiSoupsandStews':'https://www.allrecipes.com/recipes/1898/world-cuisine/asian/thai/soups-and-stews/',
+                   'ThaiDessert':'https://www.allrecipes.com/recipes/23014/world-cuisine/asian/thai/desserts/',
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
