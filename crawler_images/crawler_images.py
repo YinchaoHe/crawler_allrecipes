@@ -61,13 +61,13 @@ def main():
     parser.add_argument("-c", "--chromedriver", help="chromedriver", type=str, default="/Users/yinchaohe/Downloads/chromedriver", required=False)
     parser.add_argument("-d", "--image_directory", help="image_directory", type=str, default="rose", required=False)
     args = parser.parse_args()
-    keywords = ['watermelon+fruit+salad']
+    keywords = ['watermelon+fruit']
     for keyword in keywords:
         args.keywords =  keyword
         args.image_directory = keyword
         crawler_images(args)
         rule_disco(keyword)
-        rename_sig_in(keyword)
+        #rename_sig_in(keyword)
 
 if __name__ == '__main__':
     main()

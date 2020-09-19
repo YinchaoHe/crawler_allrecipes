@@ -11,20 +11,18 @@ import logging
 
 def main():
     try:
-        country = 'Italian'
+        country = 'IndianRecipes'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
-                   'ChineseAppetizer': 'https://www.allrecipes.com/recipes/1899/world-cuisine/asian/chinese/appetizers/',
-                   #'ChineseMainDish':'https://www.allrecipes.com/recipes/17135/world-cuisine/asian/chinese/main-dishes/',
-                   'ChineseBeefMainDish':'https://www.allrecipes.com/recipes/22838/world-cuisine/asian/chinese/main-dishes/beef/',
-                   'ChineseChickenMainDish':'https://www.allrecipes.com/recipes/1902/world-cuisine/asian/chinese/main-dishes/chicken/',
-                   'ChinesePorkMainDish':'https://www.allrecipes.com/recipes/1901/world-cuisine/asian/chinese/main-dishes/pork/',
-                   'ChineseSeafoodMainDish':'https://www.allrecipes.com/recipes/1903/world-cuisine/asian/chinese/main-dishes/seafood/',
-                   'ChineseSoupsandStews':'https://www.allrecipes.com/recipes/1900/world-cuisine/asian/chinese/soups-and-stews/',
-                   'ChineseStir-Fry':'https://www.allrecipes.com/recipes/259/main-dish/stir-fry/',
+                   'IndianAppetizer': 'https://www.allrecipes.com/recipes/1874/world-cuisine/asian/indian/appetizers/',
+                   'IndianBread':'https://www.allrecipes.com/recipes/1876/world-cuisine/asian/indian/bread/',
+                   'IndianDessert':'https://www.allrecipes.com/recipes/1879/world-cuisine/asian/indian/desserts/',
+                   'IndianDrinks':'https://www.allrecipes.com/recipes/15935/world-cuisine/asian/indian/drinks/',
+                   'IndianMainDish':'https://www.allrecipes.com/recipes/17136/world-cuisine/asian/indian/main-dishes/',
+                   'IndianSideDish':'https://www.allrecipes.com/recipes/1877/world-cuisine/asian/indian/side-dishes/',
 
     }
     for recipe_info in recipe_infos.keys():
