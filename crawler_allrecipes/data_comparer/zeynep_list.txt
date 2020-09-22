@@ -1,0 +1,161 @@
+apple 
+apricot 
+asparagus 
+avocado 
+bacon 
+banana 
+basil,fresh 
+bean,sprout 
+beef,T-bone steak 
+beef,chuck 
+beef,eye of round steak 
+beef,ground 
+beef,ribeye steak 
+beef,roast 
+beef,steak 
+beef,summer sausage 
+beef,tenderloin steak 
+blackberry 
+blueberry 
+bok choy 
+bratwurst 
+broccoli 
+brussel sprout 
+butter 
+cabbage,green 
+cabbage,napa 
+cabbage,red 
+cantaloupe 
+carrot,baby cut 
+catfish,nugget 
+cauliflower 
+celery 
+cheese,blue 
+cheese,cheddar 
+cheese,colby jack 
+cheese,cottage 
+cheese,cream 
+cheese,feta 
+cheese,goat 
+cheese,gouda 
+cheese,gruyere 
+cheese,mexican 
+cheese,monterey jack 
+cheese,mozarella 
+cheese,parmesan 
+cheese,parmesan 
+cheese,pepper jack 
+cheese,provolone 
+cheese,swiss 
+cheese,wisconsin 
+cherry 
+chicken,breast 
+chicken,breast fillet 
+chicken,mesquite 
+cilantro 
+collard green 
+corn 
+crab 
+crawfish 
+cream,sour 
+cream,whipping 
+cucumber 
+egg 
+eggplant 
+endive 
+garlic 
+ginger 
+grape,green 
+grape,red 
+grape,red globe 
+grapefruit 
+grapes,black 
+ham 
+jicama 
+juice,apple 
+juice,grapefruit 
+juice,orange 
+juice,tangerine 
+kale 
+kiwi 
+leek 
+lemon 
+lettuce,green leaf 
+lettuce,head 
+lettuce,iceberg 
+lettuce,red leaf 
+lettuce,romaine 
+lime 
+lobster,tail 
+mandarin 
+mango 
+melon,honeydew 
+milk 
+milk,almond 
+milk,cashew 
+mint 
+mushroom 
+mussel 
+nectarine 
+onion dip 
+onion,green 
+onion,red 
+onion,vidalia 
+onion,white 
+onion,yellow 
+orange 
+oregano 
+papaya 
+parsley,curly 
+parsley,italian 
+pea,snow 
+pea,sugar snap 
+peach 
+pear 
+pear 
+pear,red 
+pears,cactus 
+pepper,anaheim 
+pepper,bell (green,red,yellow) 
+pepper,jalapeno 
+pepper,poblano 
+pepperoni 
+plantain 
+plum 
+pork,loin chop 
+pork,sausage 
+pork,shoulder blade 
+pork,top loin chop 
+potato 
+potato,red 
+potato,red 
+potato,russet 
+radicchio 
+radish 
+radish,white 
+raspberry 
+rutabaga 
+sage 
+salmon 
+shallot 
+shrimp 
+spinach 
+spreadable butter with canola oil 
+squash,acorn 
+squash,butternut 
+squash,spaghetti 
+squash,yellow 
+squash,zucchini 
+strawberry 
+swiss chard 
+tilapia 
+tofu 
+tomatillo 
+tomato 
+trout,fillet 
+turkey,breast tenderloin 
+turkey,ground 
+turnip green 
+turnip,white 
+vegetable oil spread 
+watermelon 

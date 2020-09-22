@@ -1,0 +1,10 @@
+Berry_fruit
+Citrus_fruit
+Collective_fruit
+Cucurbites
+Drupe
+Litchies
+Nut_fruit
+Persimmons_and_jujubes_fruit
+Pome
+other_fruit

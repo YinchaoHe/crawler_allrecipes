@@ -11,17 +11,63 @@ import logging
 
 def main():
     try:
-        country = 'ThaiRecipes'
+        country = 'AmericanRecipes'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
-                   'ThaiAppetizer': 'https://www.allrecipes.com/recipes/1894/world-cuisine/asian/thai/appetizers/',
-                   'ThaiMainDish':'https://www.allrecipes.com/recipes/17137/world-cuisine/asian/thai/main-dishes/',
-                   'ThaiPad':'https://www.allrecipes.com/recipes/17825/world-cuisine/asian/thai/main-dishes/pad-thai/',
-                   'ThaiSoupsandStews':'https://www.allrecipes.com/recipes/1898/world-cuisine/asian/thai/soups-and-stews/',
-                   'ThaiDessert':'https://www.allrecipes.com/recipes/23014/world-cuisine/asian/thai/desserts/',
+                   'Hawaii': 'https://www.allrecipes.com/recipes/734/us-recipes/us-recipes-by-state/hawaii/',
+                   'Texas':'https://www.allrecipes.com/recipes/1601/us-recipes/us-recipes-by-state/texas/',
+                   'Washington_DC':'https://www.allrecipes.com/recipes/1621/us-recipes/us-recipes-by-state/washington-dc/',
+                   'Colorado':'https://www.allrecipes.com/recipes/1622/us-recipes/us-recipes-by-state/colorado/',
+                   'Arizona':'https://www.allrecipes.com/recipes/1623/us-recipes/us-recipes-by-state/arizona/',
+                    'NorthCarolina':'https://www.allrecipes.com/recipes/1632/us-recipes/us-recipes-by-state/north-carolina/',
+                    'Illinois':'https://www.allrecipes.com/recipes/1753/us-recipes/us-recipes-by-state/illinois/',
+                    'California':'https://www.allrecipes.com/recipes/1754/us-recipes/us-recipes-by-state/california/',
+                    'Alaska':'https://www.allrecipes.com/recipes/1756/us-recipes/us-recipes-by-state/alaska/',
+                    'Oregon':'https://www.allrecipes.com/recipes/1757/us-recipes/us-recipes-by-state/oregon/',
+                    'Washington':'https://www.allrecipes.com/recipes/1758/us-recipes/us-recipes-by-state/washington/',
+                    'Wyoming':'https://www.allrecipes.com/recipes/1759/us-recipes/us-recipes-by-state/wyoming/',
+                    'Montana':'https://www.allrecipes.com/recipes/1760/us-recipes/us-recipes-by-state/montana/',
+                    'Utah':'https://www.allrecipes.com/recipes/1761/us-recipes/us-recipes-by-state/utah/',
+                    'Idaho':'https://www.allrecipes.com/recipes/1762/us-recipes/us-recipes-by-state/idaho/',
+                    'NewMexico':'https://www.allrecipes.com/recipes/1763/us-recipes/us-recipes-by-state/new-mexico/',
+                    'Oklahoma':'https://www.allrecipes.com/recipes/1764/us-recipes/us-recipes-by-state/oklahoma/',
+                    'Georgia':'https://www.allrecipes.com/recipes/1765/us-recipes/us-recipes-by-state/georgia/',
+                    'Louisiana':'https://www.allrecipes.com/recipes/1767/us-recipes/us-recipes-by-state/louisiana/',
+                    'Florida':'https://www.allrecipes.com/recipes/1766/us-recipes/us-recipes-by-state/florida/',
+                    'Maryland':'https://www.allrecipes.com/recipes/1768/us-recipes/us-recipes-by-state/maryland/',
+                    'Pennsylvania':'https://www.allrecipes.com/recipes/1770/us-recipes/us-recipes-by-state/pennsylvania/',
+                    'NewYork':'https://www.allrecipes.com/recipes/1769/us-recipes/us-recipes-by-state/new-york/',
+                    'Ohio':'https://www.allrecipes.com/recipes/1772/us-recipes/us-recipes-by-state/ohio/',
+                    'Massachusetts':'https://www.allrecipes.com/recipes/1771/us-recipes/us-recipes-by-state/massachusetts/',
+                    'Indiana':'https://www.allrecipes.com/recipes/1773/us-recipes/us-recipes-by-state/indiana/',
+                    'Michigan':'https://www.allrecipes.com/recipes/1774/us-recipes/us-recipes-by-state/michigan/',
+                    'Wisconsin':'https://www.allrecipes.com/recipes/1775/us-recipes/us-recipes-by-state/wisconsin/',
+                    'Minnesota':'https://www.allrecipes.com/recipes/1776/us-recipes/us-recipes-by-state/minnesota/',
+                    'Iowa':'https://www.allrecipes.com/recipes/1778/us-recipes/us-recipes-by-state/iowa/',
+                    'Missouri':'https://www.allrecipes.com/recipes/1777/us-recipes/us-recipes-by-state/missouri/',
+                    'SouthDakota':'https://www.allrecipes.com/recipes/1780/us-recipes/us-recipes-by-state/south-dakota/',
+                    'NorthDakota':'https://www.allrecipes.com/recipes/1779/us-recipes/us-recipes-by-state/north-dakota/',
+                    'Kansas':'https://www.allrecipes.com/recipes/1781/us-recipes/us-recipes-by-state/kansas/',
+                    'Nebraska':'https://www.allrecipes.com/recipes/1782/us-recipes/us-recipes-by-state/nebraska/',
+                    'Connecticut':'https://www.allrecipes.com/recipes/1808/us-recipes/us-recipes-by-state/connecticut/',
+                    'Maine':'https://www.allrecipes.com/recipes/1809/us-recipes/us-recipes-by-state/maine/',
+                    'NewHampshire':'https://www.allrecipes.com/recipes/1810/us-recipes/us-recipes-by-state/new-hampshire/',
+                    'RhodeIsland':'https://www.allrecipes.com/recipes/1811/us-recipes/us-recipes-by-state/rhode-island/',
+                    'Vermont':'https://www.allrecipes.com/recipes/1812/us-recipes/us-recipes-by-state/vermont/',
+                    'Delaware':'https://www.allrecipes.com/recipes/1813/us-recipes/us-recipes-by-state/delaware/',
+                    'NewJersey':'https://www.allrecipes.com/recipes/1814/us-recipes/us-recipes-by-state/new-jersey/',
+                    'Virginia':'https://www.allrecipes.com/recipes/1815/us-recipes/us-recipes-by-state/virginia/',
+                    'SouthCarolina':'https://www.allrecipes.com/recipes/1816/us-recipes/us-recipes-by-state/south-carolina/',
+                    'Alabama':'https://www.allrecipes.com/recipes/1817/us-recipes/us-recipes-by-state/alabama/',
+                    'Arkansas':'https://www.allrecipes.com/recipes/1818/us-recipes/us-recipes-by-state/arkansas/',
+                    'Kentucky':'https://www.allrecipes.com/recipes/1819/us-recipes/us-recipes-by-state/kentucky/',
+                    'Mississippi':'https://www.allrecipes.com/recipes/2824/us-recipes/us-recipes-by-state/mississippi/',
+                    'Nevada':'https://www.allrecipes.com/recipes/2832/us-recipes/us-recipes-by-state/nevada/',
+                    'WestVirginia':'https://www.allrecipes.com/recipes/2593/us-recipes/us-recipes-by-state/west-virginia/',
+                    'Tennessee':'https://www.allrecipes.com/recipes/1820/us-recipes/us-recipes-by-state/tennessee/',
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
