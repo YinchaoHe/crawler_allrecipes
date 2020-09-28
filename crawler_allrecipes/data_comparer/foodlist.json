@@ -1,0 +1,856 @@
+{
+  "apple": {
+    "zeynepz_list": [
+      "apple",
+      "juice,apple"
+    ],
+    "database_list": [
+      "wax_apple",
+      "pineapple",
+      "apple",
+      "green_apple"
+    ]
+  },
+  "apricot": {
+    "zeynepz_list": [
+      "apricot"
+    ],
+    "database_list": [
+      "apricot"
+    ]
+  },
+  "asparagus": {
+    "zeynepz_list": [
+      "asparagus"
+    ],
+    "database_list": [
+      "asparagus_pea",
+      "asparagus_lettuce",
+      "asparagus",
+      "asparagus_fern"
+    ]
+  },
+  "avocado": {
+    "zeynepz_list": [
+      "avocado"
+    ],
+    "database_list": [
+      "avocado"
+    ]
+  },
+  "bacon": {
+    "zeynepz_list": [
+      "bacon"
+    ],
+    "database_list": []
+  },
+  "banana": {
+    "zeynepz_list": [
+      "banana"
+    ],
+    "database_list": [
+      "banana"
+    ]
+  },
+  "basil": {
+    "zeynepz_list": [
+      "basil,fresh"
+    ],
+    "database_list": [
+      "basil"
+    ]
+  },
+  "bean": {
+    "zeynepz_list": [
+      "bean,sprout"
+    ],
+    "database_list": [
+      "azuki_beans",
+      "black_bean_sprouts",
+      "broad_bean",
+      "hyacinth_bean",
+      "kidney_bean",
+      "kidney_bean_seed",
+      "mung_bean",
+      "sieva_bean",
+      "sieva_bean_seed",
+      "soybean",
+      "soybean_seed",
+      "sword_bean",
+      "black_bean_sprouts",
+      "mung_bean_sprouts",
+      "soybean_sprouts",
+      "yam_bean"
+    ]
+  },
+  "beef": {
+    "zeynepz_list": [
+      "beef,T-bone steak",
+      "beef,chuck",
+      "beef,eye of round steak",
+      "beef,ground",
+      "beef,ribeye steak",
+      "beef,roast",
+      "beef,steak",
+      "beef,summer sausage",
+      "beef,tenderloin steak"
+    ],
+    "database_list": [
+      "beefsteak_plant"
+    ]
+  },
+  "blackberry": {
+    "zeynepz_list": [
+      "blackberry"
+    ],
+    "database_list": []
+  },
+  "blueberry": {
+    "zeynepz_list": [
+      "blueberry"
+    ],
+    "database_list": [
+      "blueberry"
+    ]
+  },
+  "bok\u00a0choy": {
+    "zeynepz_list": [
+      "bok\u00a0choy"
+    ],
+    "database_list": []
+  },
+  "bratwurst": {
+    "zeynepz_list": [
+      "bratwurst"
+    ],
+    "database_list": []
+  },
+  "broccoli": {
+    "zeynepz_list": [
+      "broccoli"
+    ],
+    "database_list": [
+      "broccoli",
+      "sprouting_broccoli"
+    ]
+  },
+  "brussel\u00a0sprout": {
+    "zeynepz_list": [
+      "brussel\u00a0sprout"
+    ],
+    "database_list": []
+  },
+  "butter": {
+    "zeynepz_list": [
+      "butter",
+      "spreadable butter with canola oil",
+      "squash,butternut"
+    ],
+    "database_list": []
+  },
+  "cabbage": {
+    "zeynepz_list": [
+      "cabbage,green",
+      "cabbage,napa",
+      "cabbage,red"
+    ],
+    "database_list": [
+      "head_cabbage",
+      "red_cabbage",
+      "turnip_cabbage",
+      "Chinese_cabbage",
+      "flower_Chinese_cabbage",
+      "red_cabbage"
+    ]
+  },
+  "cantaloupe": {
+    "zeynepz_list": [
+      "cantaloupe"
+    ],
+    "database_list": []
+  },
+  "carrot": {
+    "zeynepz_list": [
+      "carrot,baby cut"
+    ],
+    "database_list": [
+      "carrot"
+    ]
+  },
+  "catfish": {
+    "zeynepz_list": [
+      "catfish,nugget"
+    ],
+    "database_list": []
+  },
+  "cauliflower": {
+    "zeynepz_list": [
+      "cauliflower"
+    ],
+    "database_list": []
+  },
+  "celery": {
+    "zeynepz_list": [
+      "celery"
+    ],
+    "database_list": [
+      "celery"
+    ]
+  },
+  "cheese": {
+    "zeynepz_list": [
+      "cheese,blue",
+      "cheese,cheddar",
+      "cheese,colby\u00a0jack",
+      "cheese,cottage",
+      "cheese,cream",
+      "cheese,feta",
+      "cheese,goat",
+      "cheese,gouda",
+      "cheese,gruyere",
+      "cheese,mexican",
+      "cheese,monterey jack",
+      "cheese,mozarella",
+      "cheese,parmesan",
+      "cheese,parmesan",
+      "cheese,pepper jack",
+      "cheese,provolone",
+      "cheese,swiss",
+      "cheese,wisconsin"
+    ],
+    "database_list": []
+  },
+  "cherry": {
+    "zeynepz_list": [
+      "cherry"
+    ],
+    "database_list": [
+      "cherry_tomato",
+      "cherry"
+    ]
+  },
+  "chicken": {
+    "zeynepz_list": [
+      "chicken,breast",
+      "chicken,breast fillet",
+      "chicken,mesquite"
+    ],
+    "database_list": []
+  },
+  "cilantro": {
+    "zeynepz_list": [
+      "cilantro"
+    ],
+    "database_list": []
+  },
+  "collard green": {
+    "zeynepz_list": [
+      "collard green"
+    ],
+    "database_list": []
+  },
+  "corn": {
+    "zeynepz_list": [
+      "corn",
+      "squash,acorn"
+    ],
+    "database_list": [
+      "corn"
+    ]
+  },
+  "crab": {
+    "zeynepz_list": [
+      "crab"
+    ],
+    "database_list": [
+      "plum-leaf_crab"
+    ]
+  },
+  "crawfish": {
+    "zeynepz_list": [
+      "crawfish"
+    ],
+    "database_list": []
+  },
+  "cream": {
+    "zeynepz_list": [
+      "cheese,cream",
+      "cream,sour",
+      "cream,whipping"
+    ],
+    "database_list": []
+  },
+  "cucumber": {
+    "zeynepz_list": [
+      "cucumber"
+    ],
+    "database_list": [
+      "cucumber"
+    ]
+  },
+  "egg": {
+    "zeynepz_list": [
+      "egg",
+      "eggplant"
+    ],
+    "database_list": [
+      "eggplant",
+      "green_eggplant",
+      "white_eggplant"
+    ]
+  },
+  "eggplant": {
+    "zeynepz_list": [
+      "eggplant"
+    ],
+    "database_list": [
+      "eggplant",
+      "green_eggplant",
+      "white_eggplant"
+    ]
+  },
+  "endive": {
+    "zeynepz_list": [
+      "endive"
+    ],
+    "database_list": [
+      "endive"
+    ]
+  },
+  "garlic": {
+    "zeynepz_list": [
+      "garlic"
+    ],
+    "database_list": [
+      "garlic",
+      "garlic_chive",
+      "garlic_sprouts"
+    ]
+  },
+  "ginger": {
+    "zeynepz_list": [
+      "ginger"
+    ],
+    "database_list": [
+      "mioga_ginger",
+      "ginger"
+    ]
+  },
+  "grape": {
+    "zeynepz_list": [
+      "grape,green",
+      "grape,red",
+      "grape,red globe",
+      "grapefruit",
+      "grapes,black",
+      "juice,grapefruit"
+    ],
+    "database_list": [
+      "black_grape",
+      "grape",
+      "grape_white",
+      "red_grape",
+      "grapefruit"
+    ]
+  },
+  "grapefruit": {
+    "zeynepz_list": [
+      "grapefruit",
+      "juice,grapefruit"
+    ],
+    "database_list": [
+      "grapefruit"
+    ]
+  },
+  "grapes": {
+    "zeynepz_list": [
+      "grapes,black"
+    ],
+    "database_list": []
+  },
+  "ham": {
+    "zeynepz_list": [
+      "ham"
+    ],
+    "database_list": []
+  },
+  "jicama": {
+    "zeynepz_list": [
+      "jicama"
+    ],
+    "database_list": []
+  },
+  "juice": {
+    "zeynepz_list": [
+      "juice,apple",
+      "juice,grapefruit",
+      "juice,orange",
+      "juice,tangerine"
+    ],
+    "database_list": []
+  },
+  "kale": {
+    "zeynepz_list": [
+      "kale"
+    ],
+    "database_list": [
+      "Chinese_kale",
+      "curly_kale"
+    ]
+  },
+  "kiwi": {
+    "zeynepz_list": [
+      "kiwi"
+    ],
+    "database_list": [
+      "kiwi_fruit"
+    ]
+  },
+  "leek": {
+    "zeynepz_list": [
+      "leek"
+    ],
+    "database_list": [
+      "leek"
+    ]
+  },
+  "lemon": {
+    "zeynepz_list": [
+      "lemon"
+    ],
+    "database_list": [
+      "lemon"
+    ]
+  },
+  "lettuce": {
+    "zeynepz_list": [
+      "lettuce,green leaf",
+      "lettuce,head",
+      "lettuce,iceberg",
+      "lettuce,red leaf",
+      "lettuce,romaine"
+    ],
+    "database_list": [
+      "asparagus_lettuce",
+      "leaf_lettuce",
+      "lettuce",
+      "prickly_lettuce"
+    ]
+  },
+  "lime": {
+    "zeynepz_list": [
+      "lime"
+    ],
+    "database_list": [
+      "lime"
+    ]
+  },
+  "lobster": {
+    "zeynepz_list": [
+      "lobster,tail"
+    ],
+    "database_list": []
+  },
+  "mandarin": {
+    "zeynepz_list": [
+      "mandarin"
+    ],
+    "database_list": [
+      "mandarin_orange"
+    ]
+  },
+  "mango": {
+    "zeynepz_list": [
+      "mango"
+    ],
+    "database_list": [
+      "mango",
+      "mangosteen"
+    ]
+  },
+  "melon": {
+    "zeynepz_list": [
+      "melon,honeydew",
+      "watermelon"
+    ],
+    "database_list": [
+      "Hami_melon",
+      "golden_melon",
+      "honey_dew_melon",
+      "muskmelon",
+      "netted_melon"
+    ]
+  },
+  "milk": {
+    "zeynepz_list": [
+      "milk",
+      "milk,almond",
+      "milk,cashew"
+    ],
+    "database_list": [
+      "milk_thistle"
+    ]
+  },
+  "mint": {
+    "zeynepz_list": [
+      "mint"
+    ],
+    "database_list": [
+      "mint"
+    ]
+  },
+  "mushroom": {
+    "zeynepz_list": [
+      "mushroom"
+    ],
+    "database_list": [
+      "enoki_mushroom",
+      "oyster_mushroom",
+      "straw_mushroom",
+      "termite_mushroom"
+    ]
+  },
+  "mussel": {
+    "zeynepz_list": [
+      "mussel"
+    ],
+    "database_list": []
+  },
+  "nectarine": {
+    "zeynepz_list": [
+      "nectarine"
+    ],
+    "database_list": [
+      "nectarine"
+    ]
+  },
+  "onion dip": {
+    "zeynepz_list": [
+      "onion dip"
+    ],
+    "database_list": []
+  },
+  "onion": {
+    "zeynepz_list": [
+      "onion dip",
+      "onion,green",
+      "onion,red",
+      "onion,vidalia",
+      "onion,white",
+      "onion,yellow"
+    ],
+    "database_list": [
+      "bunching_onion",
+      "green_Chinese_onion",
+      "onion"
+    ]
+  },
+  "orange": {
+    "zeynepz_list": [
+      "juice,orange",
+      "orange"
+    ],
+    "database_list": [
+      "blood_orange",
+      "mandarin_orange",
+      "navel_orange",
+      "sugar_orange",
+      "trifoliate_orange"
+    ]
+  },
+  "oregano": {
+    "zeynepz_list": [
+      "oregano"
+    ],
+    "database_list": []
+  },
+  "papaya": {
+    "zeynepz_list": [
+      "papaya"
+    ],
+    "database_list": [
+      "papaya"
+    ]
+  },
+  "parsley": {
+    "zeynepz_list": [
+      "parsley,curly",
+      "parsley,italian"
+    ],
+    "database_list": [
+      "parsley"
+    ]
+  },
+  "pea": {
+    "zeynepz_list": [
+      "pea,snow",
+      "pea,sugar snap",
+      "peach",
+      "pear",
+      "pear",
+      "pear,red",
+      "pears,cactus"
+    ],
+    "database_list": [
+      "flat_peach",
+      "juicy_peach",
+      "bergamot_pear",
+      "crown_pear",
+      "housi_pear",
+      "sand_pear"
+    ]
+  },
+  "peach": {
+    "zeynepz_list": [
+      "peach"
+    ],
+    "database_list": [
+      "flat_peach",
+      "juicy_peach"
+    ]
+  },
+  "pear": {
+    "zeynepz_list": [
+      "pear",
+      "pear",
+      "pear,red",
+      "pears,cactus"
+    ],
+    "database_list": [
+      "bergamot_pear",
+      "crown_pear",
+      "housi_pear",
+      "sand_pear"
+    ]
+  },
+  "pears": {
+    "zeynepz_list": [
+      "pears,cactus"
+    ],
+    "database_list": []
+  },
+  "pepper": {
+    "zeynepz_list": [
+      "cheese,pepper jack",
+      "pepper,anaheim",
+      "pepper,bell (green,red,yellow)",
+      "pepper,jalapeno",
+      "pepper,poblano",
+      "pepperoni"
+    ],
+    "database_list": [
+      "pepper",
+      "bird_pepper"
+    ]
+  },
+  "pepperoni": {
+    "zeynepz_list": [
+      "pepperoni"
+    ],
+    "database_list": []
+  },
+  "plantain": {
+    "zeynepz_list": [
+      "plantain"
+    ],
+    "database_list": []
+  },
+  "plum": {
+    "zeynepz_list": [
+      "plum"
+    ],
+    "database_list": [
+      "plum",
+      "plum-leaf_crab"
+    ]
+  },
+  "pork": {
+    "zeynepz_list": [
+      "pork,loin chop",
+      "pork,sausage",
+      "pork,shoulder blade",
+      "pork,top loin chop"
+    ],
+    "database_list": []
+  },
+  "potato": {
+    "zeynepz_list": [
+      "potato",
+      "potato,red",
+      "potato,red",
+      "potato,russet"
+    ],
+    "database_list": [
+      "potato",
+      "sweet_potato"
+    ]
+  },
+  "radicchio": {
+    "zeynepz_list": [
+      "radicchio"
+    ],
+    "database_list": []
+  },
+  "radish": {
+    "zeynepz_list": [
+      "radish",
+      "radish,white"
+    ],
+    "database_list": [
+      "green_radish",
+      "white_radish"
+    ]
+  },
+  "raspberry": {
+    "zeynepz_list": [
+      "raspberry"
+    ],
+    "database_list": [
+      "raspberry"
+    ]
+  },
+  "rutabaga": {
+    "zeynepz_list": [
+      "rutabaga"
+    ],
+    "database_list": []
+  },
+  "sage": {
+    "zeynepz_list": [
+      "beef,summer sausage",
+      "pork,sausage",
+      "sage"
+    ],
+    "database_list": []
+  },
+  "salmon": {
+    "zeynepz_list": [
+      "salmon"
+    ],
+    "database_list": []
+  },
+  "shallot": {
+    "zeynepz_list": [
+      "shallot"
+    ],
+    "database_list": [
+      "shallot"
+    ]
+  },
+  "shrimp": {
+    "zeynepz_list": [
+      "shrimp"
+    ],
+    "database_list": []
+  },
+  "spinach": {
+    "zeynepz_list": [
+      "spinach"
+    ],
+    "database_list": [
+      "New_Zealand_spinach",
+      "spinach",
+      "water_spinach"
+    ]
+  },
+  "spreadable butter with canola oil": {
+    "zeynepz_list": [
+      "spreadable butter with canola oil"
+    ],
+    "database_list": []
+  },
+  "squash": {
+    "zeynepz_list": [
+      "squash,acorn",
+      "squash,butternut",
+      "squash,spaghetti",
+      "squash,yellow",
+      "squash,zucchini"
+    ],
+    "database_list": [
+      "hairy_squash"
+    ]
+  },
+  "strawberry": {
+    "zeynepz_list": [
+      "strawberry"
+    ],
+    "database_list": [
+      "strawberry"
+    ]
+  },
+  "swiss chard": {
+    "zeynepz_list": [
+      "swiss chard"
+    ],
+    "database_list": []
+  },
+  "tilapia": {
+    "zeynepz_list": [
+      "tilapia"
+    ],
+    "database_list": []
+  },
+  "tofu": {
+    "zeynepz_list": [
+      "tofu"
+    ],
+    "database_list": []
+  },
+  "tomatillo": {
+    "zeynepz_list": [
+      "tomatillo"
+    ],
+    "database_list": []
+  },
+  "tomato": {
+    "zeynepz_list": [
+      "tomato"
+    ],
+    "database_list": [
+      "cherry_tomato"
+    ]
+  },
+  "trout": {
+    "zeynepz_list": [
+      "trout,fillet"
+    ],
+    "database_list": []
+  },
+  "turkey": {
+    "zeynepz_list": [
+      "turkey,breast tenderloin",
+      "turkey,ground"
+    ],
+    "database_list": []
+  },
+  "turnip green": {
+    "zeynepz_list": [
+      "turnip green"
+    ],
+    "database_list": []
+  },
+  "turnip": {
+    "zeynepz_list": [
+      "turnip green",
+      "turnip,white"
+    ],
+    "database_list": [
+      "turnip_cabbage"
+    ]
+  },
+  "vegetable oil spread": {
+    "zeynepz_list": [
+      "vegetable oil spread"
+    ],
+    "database_list": []
+  },
+  "watermelon": {
+    "zeynepz_list": [
+      "watermelon"
+    ],
+    "database_list": [
+      "watermelon"
+    ]
+  }
+}

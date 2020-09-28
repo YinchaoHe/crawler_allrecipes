@@ -11,17 +11,17 @@ import logging
 
 def main():
     try:
-        country = 'GreekRecipes'
+        country = 'FrenchRecipes'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
-                   'GreekAppetizer': 'https://www.allrecipes.com/recipes/1885/world-cuisine/european/greek/appetizers/',
-                    'GreekMainDish':'https://www.allrecipes.com/recipes/17152/world-cuisine/european/greek/main-dishes/',
-                    'GreekSalad':'https://www.allrecipes.com/recipes/1887/world-cuisine/european/greek/salads/',
-                    'GreekSideDish':'https://www.allrecipes.com/recipes/1886/world-cuisine/european/greek/side-dishes/',
-                    'GreekDessert':'https://www.allrecipes.com/recipes/1888/world-cuisine/european/greek/desserts/'
+                   'FrenchAppetizer': 'https://www.allrecipes.com/recipes/1848/world-cuisine/european/french/appetizers/',
+                    'FrenchBread':'https://www.allrecipes.com/recipes/16126/world-cuisine/european/french/french-bread/',
+                    'FrenchDessert':'https://www.allrecipes.com/recipes/1828/world-cuisine/european/french/desserts/',
+                    'FrenchMainDish':'https://www.allrecipes.com/recipes/17138/world-cuisine/european/french/main-dishes/',
+                    'FrenchSoupsandStews':'https://www.allrecipes.com/recipes/1829/world-cuisine/european/french/soups-and-stews/'
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
