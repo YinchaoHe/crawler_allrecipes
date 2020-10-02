@@ -11,18 +11,20 @@ import logging
 
 def main():
     try:
-        country = 'UKRecipes'
+        country = 'Recipes'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
 
-                    'EnglishRecipes':'https://www.allrecipes.com/recipes/705/world-cuisine/european/uk-and-ireland/english/',
-                    'IrishRecipes':'https://www.allrecipes.com/recipes/706/world-cuisine/european/uk-and-ireland/irish/',
-                    'WelshRecipes':'https://www.allrecipes.com/recipes/708/world-cuisine/european/uk-and-ireland/welsh/',
-                    'ScottishRecipes':'https://www.allrecipes.com/recipes/707/world-cuisine/european/uk-and-ireland/scottish/'
-
+                    'CanadianRecipes':'https://www.allrecipes.com/recipes/17475/world-cuisine/african/main-dishes/',
+                    'AustralianandNewZealanderRecipes':'https://www.allrecipes.com/recipes/228/world-cuisine/australian-and-new-zealander/',
+                    'GermanRecipes':'https://www.allrecipes.com/recipes/722/world-cuisine/european/german/',
+                    'SwissRecipes':'https://www.allrecipes.com/recipes/727/world-cuisine/european/swiss/',
+                    'LebaneseRecipes':'https://www.allrecipes.com/recipes/1824/world-cuisine/middle-eastern/lebanese/',
+                    'TurkishRecipes':'https://www.allrecipes.com/recipes/1825/world-cuisine/middle-eastern/turkish/',
+                    'IsraeliRecipes':'https://www.allrecipes.com/recipes/1826/world-cuisine/middle-eastern/israeli/',
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
