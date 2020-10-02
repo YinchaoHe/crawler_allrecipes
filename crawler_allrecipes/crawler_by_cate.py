@@ -18,11 +18,9 @@ def main():
 
     recipe_infos = {
 
-                    'ChileanRecipes':'https://www.allrecipes.com/recipes/1277/world-cuisine/latin-american/south-american/chilean/',
-                    'BrazilianRecipes':'https://www.allrecipes.com/recipes/1278/world-cuisine/latin-american/south-american/brazilian/',
-                    'ArgentinianRecipes':'https://www.allrecipes.com/recipes/2432/world-cuisine/latin-american/south-american/argentinian/',
-                    'PeruvianRecipes':'https://www.allrecipes.com/recipes/2433/world-cuisine/latin-american/south-american/peruvian/',
-                    'ColombianRecipes':'https://www.allrecipes.com/recipes/14759/world-cuisine/latin-american/south-american/colombian/'
+                    'SpanishMainDish':'https://www.allrecipes.com/recipes/17846/world-cuisine/european/spanish/main-dishes/',
+                    'SpanishAppetizer':'https://www.allrecipes.com/recipes/17847/world-cuisine/european/spanish/appetizers/',
+                    'SpanishSoupsandStews':'https://www.allrecipes.com/recipes/17848/world-cuisine/european/spanish/soups-and-stews/',
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
