@@ -11,17 +11,15 @@ import logging
 
 def main():
     try:
-        country = 'FrenchRecipes'
+        country = 'KoreanRecipes'
         os.mkdir(country)
     except:
         print("the recipe_type folder exists in the current directory.")
 
     recipe_infos = {
-                   'FrenchAppetizer': 'https://www.allrecipes.com/recipes/1848/world-cuisine/european/french/appetizers/',
-                    'FrenchBread':'https://www.allrecipes.com/recipes/16126/world-cuisine/european/french/french-bread/',
-                    'FrenchDessert':'https://www.allrecipes.com/recipes/1828/world-cuisine/european/french/desserts/',
-                    'FrenchMainDish':'https://www.allrecipes.com/recipes/17138/world-cuisine/european/french/main-dishes/',
-                    'FrenchSoupsandStews':'https://www.allrecipes.com/recipes/1829/world-cuisine/european/french/soups-and-stews/'
+
+                    'KoreanMainDish':'https://www.allrecipes.com/recipes/17833/world-cuisine/asian/korean/main-dishes/',
+                    'KoreanSoupsandStewsRecipes':'https://www.allrecipes.com/recipes/17832/world-cuisine/asian/korean/soups-and-stews/',
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
