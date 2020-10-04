@@ -24,6 +24,7 @@ def main():
         if flag == 1:
             FDCID.append(int(new_FDCID))
 
+    output_info = []
     for item in FDCID:
         url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=DEMO_KEY"
         os.system("curl " + url + "> result/" + str(item) +".json")
@@ -42,14 +43,16 @@ def main():
                 if nutrient['id'] == 1106 or nutrient['id'] == 1162 or nutrient['id'] == 1087 or nutrient['id'] == 1089 or nutrient['id'] == 1165 or nutrient['id'] == 1167 or nutrient['id'] == 1175 or nutrient['id'] == 1090 or nutrient['id'] == 1187:
                     nu_info[nutrient['name']] = str(nutrient['rank'] / 100) + nutrient['unitName']
             result['nutrition'] = nu_info
-            name = data["description"].replace(" ", "")
-            name = name.replace(",", "_")
-            with open('result/' + name + '.json', 'w') as f:
-                json.dump(result, f)
+            output_info.append(result)
+            # name = data["description"].replace(" ", "")
+            # name = name.replace(",", "_")
+            # with open('result/' + name + '.json', 'w') as f:
+            #     json.dump(result, f)
         except:
             continue
 
-
+    with open('ingredient_nutritient.json', 'w') as f:
+        json.dump(output_info, f)
 
 
 
