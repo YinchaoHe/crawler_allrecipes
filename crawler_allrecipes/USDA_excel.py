@@ -6,18 +6,18 @@ import os
 
 
 def main():
-    # data = pd.read_excel("test.xlsx")
-    # df = pd.DataFrame(data, columns= ['FDCID'])
-    # df = df.dropna()
-    FDCID =[172179]
-    # for new_FDCID in df['FDCID']:
-    #     flag = 1
-    #     for checked_FDCID in FDCID:
-    #         if checked_FDCID == new_FDCID:
-    #             flag = 0
-    #             break
-    #     if flag == 1:
-    #         FDCID.append(int(new_FDCID))
+    data = pd.read_excel("test.xlsx")
+    df = pd.DataFrame(data, columns= ['FDCID'])
+    df = df.dropna()
+    FDCID =[]
+    for new_FDCID in df['FDCID']:
+        flag = 1
+        for checked_FDCID in FDCID:
+            if checked_FDCID == new_FDCID:
+                flag = 0
+                break
+        if flag == 1:
+            FDCID.append(int(new_FDCID))
 
     for item in FDCID:
         url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=DEMO_KEY"
