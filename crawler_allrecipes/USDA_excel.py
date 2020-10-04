@@ -6,6 +6,11 @@ import os
 
 
 def main():
+    try:
+        os.mkdir('result')
+    except:
+        print("the folder exists in the current directory.")
+
     data = pd.read_excel("test.xlsx")
     df = pd.DataFrame(data, columns= ['FDCID'])
     df = df.dropna()
