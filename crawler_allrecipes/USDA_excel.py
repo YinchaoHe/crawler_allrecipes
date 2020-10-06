@@ -1,15 +1,9 @@
 import json
 import os
-
+import csv
 import pandas as pd
 
-
-def main():
-    try:
-        os.mkdir('result')
-    except:
-        print("the folder exists in the current directory.")
-
+def read_excel():
     data = pd.read_excel("test.xlsx")
     df = pd.DataFrame(data, columns=['FDCID'])
     df = df.dropna()
@@ -22,24 +16,46 @@ def main():
                 break
         if flag == 1:
             FDCID.append(int(new_FDCID))
+    result = {}
+    result['FDCID'] = FDCID
+    with open('FDCID.txt', 'w') as f:
+        json.dump(result, f)
 
+def read_cvs():
+    fdc_id = []
+    with open('sr_legacy_food.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        next(csv_reader)
+        for row in csv_reader:
+            fdc_id.append(row[0])
+    return fdc_id
+
+def grap_nutritient():
+    path = 'original_ingredient_nutrition'
+    new_path = 'chosen_ingredient_nutrition'
+    try:
+        os.mkdir(path)
+    except:
+        print("the folder exists in the current directory.")
+    try:
+        os.mkdir(new_path)
+    except:
+        print("the folder exists in the current directory.")
+
+    # with open('FDCID.txt') as f:
+    #     data = json.load(f)
+    #FDCID = data['FDCID']
+    FDCID = read_cvs()
     for item in FDCID:
-        url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=DEMO_KEY"
-        os.system("curl " + url + "> result/" + str(item) + ".json")
-        with open('result/' + str(item) + '.json') as f:
+        url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=e01UT0otB3MCPfFPoCiBveKhsOwmdm9PgMgFFy7Q"
+        os.system("curl " + url + "> original_ingredient_nutrition/" + str(item) + ".json")
+        with open('original_ingredient_nutrition/' + str(item) + '.json') as f:
             data = json.load(f)
-        os.remove('result/' + str(item) + '.json')
+        os.remove(path +'/' + str(item) + '.json')
 
-        try:
-            result = {"ingredient": data["description"],
-                      "portion": '100g'}
-            name = data["description"].replace(" ", "")
-            name = name.replace(",", "_")
-        except:
-            result = {"ingredient": item,
-                      "portion": '100g'}
-            name = str(item)
-            
+        result = {"ingredient": data["description"],
+                  "portion": '100g'}
+
         nu_info = {}
         for nutrient_info in data["foodNutrients"]:
             nutrient = nutrient_info['nutrient']
@@ -52,9 +68,31 @@ def main():
                 'id'] == 1090 or nutrient['id'] == 1187:
                 nu_info[nutrient['name']] = str(nutrient['rank'] / 100) + nutrient['unitName']
         result['nutrition'] = nu_info
+        name = data["description"].replace(" ", "")
+        name = name.replace(",", "_")
+        name = name.replace("/", "_")
 
-        with open('result/' + name + '.json', 'w') as f:
+        with open(new_path + '/' + name + '.json', 'w') as f:
             json.dump(result, f)
+
+        with open(path + '/' + name + '.json', 'w') as f:
+            json.dump(data, f)
+
+
+def combine(path):
+
+    info = []
+    file_list = os.listdir(path)
+    for file in file_list:
+        with open(path + '/' + file) as f:
+            data = json.load(f)
+        info.append(data)
+    with open('all_ingredients_nutritient.json', 'w') as f:
+        json.dump(info, f)
+
+
+def main():
+    grap_nutritient()
 
 
 if __name__ == '__main__':
