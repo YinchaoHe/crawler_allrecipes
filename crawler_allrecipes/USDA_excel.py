@@ -58,7 +58,7 @@ def grap_nutritient():
         with open('original_ingredient_nutrition/' + str(item) + '.json') as f:
             data = json.load(f)
         os.remove(path +'/' + str(item) + '.json')
-        time.sleep(20)
+        #time.sleep(20)
 
         name = data["description"].replace(" ", "")
         name = name.replace(",", "_")
@@ -109,8 +109,8 @@ def count():
     print(len(file_list))
 
 def main():
-    read_cvs()
-    #grap_nutritient()
+    #read_cvs()
+    grap_nutritient()
 
 
 if __name__ == '__main__':
