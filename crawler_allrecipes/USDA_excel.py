@@ -30,7 +30,10 @@ def read_cvs():
         next(csv_reader)
         for row in csv_reader:
             fdc_id.append(row[0])
-    return fdc_id
+    result = {}
+    result['FDCID'] = fdc_id
+    with open('FDCID_1.txt', 'w') as f:
+        json.dump(result, f)
 
 def grap_nutritient():
     path = 'original_ingredient_nutrition'
@@ -44,10 +47,10 @@ def grap_nutritient():
     except:
         print("the folder exists in the current directory.")
 
-    # with open('FDCID.txt') as f:
-    #     data = json.load(f)
-    #FDCID = data['FDCID']
-    FDCID = read_cvs()
+    with open('FDCID_1.txt') as f:
+        data = json.load(f)
+    FDCID = data['FDCID']
+    # FDCID = read_cvs()
     for item in FDCID:
         print("the FDCID is: " + str(item))
         url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=e01UT0otB3MCPfFPoCiBveKhsOwmdm9PgMgFFy7Q"
@@ -56,7 +59,7 @@ def grap_nutritient():
             data = json.load(f)
         os.remove(path +'/' + str(item) + '.json')
         time.sleep(20)
-        
+
         name = data["description"].replace(" ", "")
         name = name.replace(",", "_")
         name = name.replace("/", "_")
@@ -106,7 +109,8 @@ def count():
     print(len(file_list))
 
 def main():
-    grap_nutritient()
+    read_cvs()
+    #grap_nutritient()
 
 
 if __name__ == '__main__':
