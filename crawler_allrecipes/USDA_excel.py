@@ -53,7 +53,7 @@ def grap_nutritient():
     # FDCID = read_cvs()
     for item in FDCID:
         print("the FDCID is: " + str(item))
-        url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=e01UT0otB3MCPfFPoCiBveKhsOwmdm9PgMgFFy7Q"
+        url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=5XhH6rNR9dLzWtUTVvFIzhupntyAfUmnYHkv4gWF"
         os.system("curl " + url + "> original_ingredient_nutrition/" + str(item) + ".json")
         with open('original_ingredient_nutrition/' + str(item) + '.json') as f:
             data = json.load(f)
