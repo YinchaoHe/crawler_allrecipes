@@ -47,6 +47,7 @@ def grap_nutritient():
     #FDCID = data['FDCID']
     FDCID = read_cvs()
     for item in FDCID:
+        print("the FDCID is: " + str(item))
         url = "https://api.nal.usda.gov/fdc/v1/food/" + str(item) + "?api_key=e01UT0otB3MCPfFPoCiBveKhsOwmdm9PgMgFFy7Q"
         os.system("curl " + url + "> original_ingredient_nutrition/" + str(item) + ".json")
         with open('original_ingredient_nutrition/' + str(item) + '.json') as f:
@@ -90,10 +91,13 @@ def combine(path):
     with open('all_ingredients_nutritient.json', 'w') as f:
         json.dump(info, f)
 
+def count():
+    file_list = os.listdir('original_ingredient_nutrition')
+    print(len(file_list))
 
 def main():
-    grap_nutritient()
-
+    #grap_nutritient()
+    count()
 
 if __name__ == '__main__':
     main()
