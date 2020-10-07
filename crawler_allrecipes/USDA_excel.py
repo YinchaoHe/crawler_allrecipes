@@ -66,9 +66,12 @@ def grap_nutritient():
         # if os.path.exists(path + '/' + name + '.json') == True:
         #     print(str(item) + "exists.")
         #     continue
-
-        result = {"ingredient": data["description"],
-                  "portion": '100g'}
+        try:
+            result = {"ingredient": data["description"],
+                      "portion": '100g'}
+        except:
+            result = {"ingredient": str(item),
+                      "portion": '100g'}
         nu_info = {}
         for nutrient_info in data["foodNutrients"]:
             nutrient = nutrient_info['nutrient']
