@@ -55,7 +55,8 @@ def grap_nutritient():
         with open('original_ingredient_nutrition/' + str(item) + '.json') as f:
             data = json.load(f)
         os.remove(path +'/' + str(item) + '.json')
-
+        time.sleep(20)
+        
         name = data["description"].replace(" ", "")
         name = name.replace(",", "_")
         name = name.replace("/", "_")
@@ -87,7 +88,7 @@ def grap_nutritient():
         with open(path + '/' + name + '.json', 'w') as f:
             json.dump(data, f)
 
-        time.sleep(20)
+
 
 def combine(path):
 
