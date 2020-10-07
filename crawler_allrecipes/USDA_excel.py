@@ -60,7 +60,7 @@ def grap_nutritient():
         name = name.replace(",", "_")
         name = name.replace("/", "_")
         if os.path.exists(path + '/' + name + '.json') == True:
-            break
+            continue
 
         result = {"ingredient": data["description"],
                   "portion": '100g'}
