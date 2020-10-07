@@ -60,12 +60,12 @@ def grap_nutritient():
         os.remove(path +'/' + str(item) + '.json')
         #time.sleep(20)
 
-        name = data["description"].replace(" ", "")
-        name = name.replace(",", "_")
-        name = name.replace("/", "_")
-        if os.path.exists(path + '/' + name + '.json') == True:
-            print(str(item) + "exists.")
-            continue
+        # name = data["description"].replace(" ", "")
+        # name = name.replace(",", "_")
+        # name = name.replace("/", "_")
+        # if os.path.exists(path + '/' + name + '.json') == True:
+        #     print(str(item) + "exists.")
+        #     continue
 
         result = {"ingredient": data["description"],
                   "portion": '100g'}
@@ -81,10 +81,13 @@ def grap_nutritient():
                 'id'] == 1090 or nutrient['id'] == 1187:
                 nu_info[nutrient['name']] = str(nutrient['rank'] / 100) + nutrient['unitName']
         result['nutrition'] = nu_info
-        name = data["description"].replace(" ", "")
-        name = name.replace(",", "_")
-        name = name.replace("/", "_")
 
+        try:
+            name = data["description"].replace(" ", "")
+            name = name.replace(",", "_")
+            name = name.replace("/", "_")
+        except:
+            name = str(item)
         with open(new_path + '/' + name + '.json', 'w') as f:
             json.dump(result, f)
 
