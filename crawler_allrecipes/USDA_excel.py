@@ -1,6 +1,8 @@
 import json
 import os
 import csv
+import time
+
 import pandas as pd
 
 def read_excel():
@@ -54,9 +56,14 @@ def grap_nutritient():
             data = json.load(f)
         os.remove(path +'/' + str(item) + '.json')
 
+        name = data["description"].replace(" ", "")
+        name = name.replace(",", "_")
+        name = name.replace("/", "_")
+        if os.path.exists(path + '/' + name + '.json') == True:
+            break
+
         result = {"ingredient": data["description"],
                   "portion": '100g'}
-
         nu_info = {}
         for nutrient_info in data["foodNutrients"]:
             nutrient = nutrient_info['nutrient']
@@ -79,6 +86,7 @@ def grap_nutritient():
         with open(path + '/' + name + '.json', 'w') as f:
             json.dump(data, f)
 
+        time.sleep(20)
 
 def combine(path):
 
@@ -96,8 +104,8 @@ def count():
     print(len(file_list))
 
 def main():
-    #grap_nutritient()
-    count()
+    grap_nutritient()
+
 
 if __name__ == '__main__':
     main()
