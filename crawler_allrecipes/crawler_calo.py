@@ -32,7 +32,7 @@ def main():
             with open(output_path + '/' +  str(index) + '_calories_info.json', 'w') as f:
                 json.dump(calo_info, f)
             index += 1
-
+    os.remove('re_info_path.txt')
 def get_all_nutrition(data):
     info = {'recipe_ID': data['recipe_ID']}
     try:
