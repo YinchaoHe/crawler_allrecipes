@@ -14,12 +14,12 @@ def main():
     for path in paths:
         output_path = path.replace('\n', '').split('original_recipes_info')[0]
         output_path = output_path.split('./')[1]
-        dir = output_path.split('/') + '_calories_info'
+        dir = output_path.split('/')[0] + '_calories_info'
         try:
             os.mkdir(dir)
         except:
             print('this folder exists')
-            
+
         output_path = output_path.replace('/', '_')
         print(output_path)
         # output_path += 'calories_info'
