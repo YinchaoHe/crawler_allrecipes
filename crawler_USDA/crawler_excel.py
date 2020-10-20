@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 import csv
@@ -47,7 +48,7 @@ def grap_nutritient():
     except:
         print("the folder exists in the current directory.")
 
-    with open('FDCID_1.txt') as f:
+    with open('FDCID.txt') as f:
         data = json.load(f)
     FDCID = data['FDCID']
     # FDCID = read_cvs()
@@ -75,14 +76,22 @@ def grap_nutritient():
         nu_info = {}
         for nutrient_info in data["foodNutrients"]:
             nutrient = nutrient_info['nutrient']
-            if nutrient['id'] == 1004 or nutrient['id'] == 1253 or nutrient['id'] == 1093 or nutrient['id'] == 1092 or \
-                    nutrient['id'] == 2039 or nutrient['id'] == 1079 or nutrient['id'] == 1003 or nutrient[
+            if nutrient['id'] == 1258 or nutrient['id'] == 1004 or nutrient['id'] == 1253 or nutrient['id'] == 1093 or \
+                    nutrient['id'] == 1092 or nutrient['id'] == 2039 or nutrient['id'] == 1079 or nutrient[
+                'id'] == 1003 or nutrient[
                 'id'] == 2000:
-                nu_info[nutrient['name']] = str(nutrient['rank'] / 100) + nutrient['unitName']
-            if nutrient['id'] == 1106 or nutrient['id'] == 1162 or nutrient['id'] == 1087 or nutrient['id'] == 1089 or \
+                try:
+                    nu_info[nutrient['name']] = str(nutrient_info['amount']) + nutrient['unitName']
+                except:
+                    nu_info[nutrient['name']] = "NONE"
+            if nutrient['id'] == 1106 or nutrient['id'] == 1162 or nutrient['id'] == 1087 or nutrient[
+                'id'] == 1089 or \
                     nutrient['id'] == 1165 or nutrient['id'] == 1167 or nutrient['id'] == 1175 or nutrient[
                 'id'] == 1090 or nutrient['id'] == 1187:
-                nu_info[nutrient['name']] = str(nutrient['rank'] / 100) + nutrient['unitName']
+                try:
+                    nu_info[nutrient['name']] = str(nutrient_info['amount']) + nutrient['unitName']
+                except:
+                    nu_info[nutrient['name']] = "NONE"
         result['nutrition'] = nu_info
 
         try:
@@ -98,6 +107,54 @@ def grap_nutritient():
             json.dump(data, f)
 
 
+def grap_saturated_fat():
+    path = 'sr_legacy_original_ingredient_nutrition/'
+    files = glob.glob(path + '*.json')
+    error_file = []
+    for file in files:
+        try:
+            with open(file) as f:
+                data = json.load(f)
+                try:
+                    result = {"ingredient": data["description"],
+                              "portion": '100g'}
+                except:
+                    print(data["description"] + ' ERROR')
+                nu_info = {}
+                for nutrient_info in data["foodNutrients"]:
+                    nutrient = nutrient_info['nutrient']
+                    if nutrient['id'] == 1258 or nutrient['id'] == 1004 or nutrient['id'] == 1253 or nutrient['id'] == 1093 or nutrient['id'] == 1092 or nutrient['id'] == 2039 or nutrient['id'] == 1079 or nutrient['id'] == 1003 or nutrient[
+                    'id'] == 2000:
+                        try:
+                            nu_info[nutrient['name']] = str(nutrient_info['amount']) + nutrient['unitName']
+                        except:
+                            nu_info[nutrient['name']] = "NONE"
+                    if nutrient['id'] == 1106 or nutrient['id'] == 1162 or nutrient['id'] == 1087 or nutrient[
+                        'id'] == 1089 or \
+                            nutrient['id'] == 1165 or nutrient['id'] == 1167 or nutrient['id'] == 1175 or nutrient[
+                        'id'] == 1090 or nutrient['id'] == 1187:
+                        try:
+                            nu_info[nutrient['name']] = str(nutrient_info['amount']) + nutrient['unitName']
+                        except:
+                            nu_info[nutrient['name']] = "NONE"
+                result['nutrition'] = nu_info
+                try:
+                    name = data["description"].replace(" ", "")
+                    name = name.replace(",", "_")
+                    name = name.replace("/", "_")
+                except:
+                    name = file.split('/')[-1]
+
+                new_path = 'sr_legacy_chosen_ingredient_nutrition'
+                try:
+                    os.mkdir(new_path)
+                except:
+                    print("the folder exists in the current directory.")
+                with open(new_path + '/' + name + '.json', 'w') as f:
+                    json.dump(result, f)
+        except:
+            error_file.append(file)
+    print(error_file)
 
 def combine(path):
 
@@ -115,7 +172,6 @@ def count():
     print(len(file_list))
 
 def main():
-    #read_cvs()
     grap_nutritient()
 
 
