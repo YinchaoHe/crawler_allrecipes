@@ -27,9 +27,11 @@ def main():
         path = path.replace('\n', '') + '/'
         files=glob.glob(path + '*')
         for file in files:
+            directory = output_path
             filename = file.split('/')[-1]
-            output_path += filename
-            print(output_path)
-            shutil.move(file, dir + '/' + output_path)
+            directory += filename
+            shutil.move(file, dir + '/' + directory)
+
+
 if __name__ == '__main__':
     main()
