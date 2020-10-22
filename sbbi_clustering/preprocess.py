@@ -5,19 +5,19 @@ import json
 import os
 import shutil
 
-def extract_text_files():
+def extract_text_files(country):
     os.system("find . -name original_recipes_info > re_info_path.txt")
     try:
-        os.mkdir('')
+        os.mkdir(country)
     except:
         print('this folder exists')
-
     with open("re_info_path.txt") as f:
         paths = f.readlines()
     for path in paths:
         output_path = path.replace('\n', '').split('original_recipes_info')[0]
         output_path = output_path.split('./')[1]
         dir = output_path.split('/')[0] + '_text_info'
+        dir = country + '/' + dir
         try:
             os.mkdir(dir)
         except:
@@ -68,6 +68,7 @@ def nutrition_json2cvs(country):
     csv_columns = ['Recipe_ID', 'calories', 'Total Fat', 'Saturated Fat', 'Cholesterol', 'Sodium', 'Potassium','Total Carbohydrates', 'Dietary Fiber', 'Protein', 'Sugars', 'Vitamin A', 'Vitamin C', 'Calcium', 'Iron', 'Thiamin', 'Niacin', 'Vitamin B6', 'Magnesium', 'Folate']
     folders = glob.glob(country + '/*')
     for folder in folders:
+        print(folders)
         files = glob.glob(folder + '/*')
         for file in files:
             print(file)
@@ -89,7 +90,7 @@ def nutrition_json2cvs(country):
                     recipe['nutrition']['calories'] = all_recipes_calo[recipe['recipe_ID']]
                     dict_data.append(recipe['nutrition'])
 
-            csv_file =  country + "_recipes_nutrition.csv"
+            csv_file =  country + '/' + country + "_recipes_nutrition.csv"
             if os.path.isfile(csv_file):
                 try:
                     with open(csv_file, 'a+') as csvfile:
@@ -108,16 +109,18 @@ def nutrition_json2cvs(country):
                 except IOError:
                     print("I/O error")
 
-            with open(country+'_integration_all_calo.json', 'w') as f:
+            with open( country + '/' +country+'_integration_all_calo.json', 'w') as f:
                 json.dump(all_recipes_calo, f)
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--country", help="country information", default="None")
+    parser.add_argument("-c", "--country", help="country information", required=True)
+    parser.add_argument("-n", "--nutrition", help="nutrition information", default=False)
     country = parser.parse_args().country
-    if country == 'None':
-        extract_text_files()
+    isNutrition = parser.parse_args().nutrition
+    if isNutrition == False:
+        extract_text_files(country)
     else:
         nutrition_json2cvs(country)
 
