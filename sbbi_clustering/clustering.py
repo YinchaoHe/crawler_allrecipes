@@ -9,9 +9,9 @@ import argparse
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--country", help="country information", required=True)
-    args = parser.parse_args().country
+    country = parser.parse_args().country
     csv_columns = ['Total Fat', 'Saturated Fat', 'Cholesterol', 'Sodium', 'Potassium','Total Carbohydrates', 'Dietary Fiber', 'Protein', 'Sugars', 'Vitamin A', 'Vitamin C', 'Calcium', 'Iron', 'Thiamin', 'Niacin', 'Vitamin B6', 'Magnesium', 'Folate']
-    folders = glob.glob(args + '/*')
+    folders = glob.glob(country + '/*')
     for folder in folders:
         files = glob.glob(folder + '/*')
         for file in files:
@@ -32,7 +32,7 @@ def main():
                     print(recipe['nutrition'])
                     dict_data.append(recipe['nutrition'])
 
-            csv_file = "recipes_nutrition.csv"
+            csv_file =  country + "_recipes_nutrition.csv"
             if os.path.isfile(csv_file):
                 try:
                     with open(csv_file, 'a+') as csvfile:
