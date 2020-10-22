@@ -1,3 +1,6 @@
+import argparse
+import glob
+import os
 import numpy
 from numpy import genfromtxt
 from sklearn.cluster import DBSCAN
@@ -18,7 +21,13 @@ def recipes_KMean(nutrition_data):
     print(1)
 
 def main():
-    csv_file = 'Americe_recipes_nutrition.csv'
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("-c", "--country", help="country information", default='American')
+    # country = parser.parse_args().country
+    country = 'American'
+    os.chdir(country)
+    csv_file = glob.glob(country + '_recipes_nutrition.csv')[0]
+
     nutrition_data = genfromtxt(csv_file, delimiter=',', skip_header=True)
     nutrition_data = numpy.delete(nutrition_data, 0, 1)
     recipes_DBSCAN(nutrition_data)
