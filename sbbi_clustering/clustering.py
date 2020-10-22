@@ -15,6 +15,7 @@ def main():
     for folder in folders:
         files = glob.glob(folder + '/*')
         for file in files:
+            print(file)
             with open(file, 'r') as f:
                 recipes = json.load(f)
             dict_data = []
@@ -29,7 +30,6 @@ def main():
                             recipe['nutrition'][key] = recipe['nutrition'][key].split('g')[0]
                         elif 'IU' in recipe['nutrition'][key]:
                             recipe['nutrition'][key] = recipe['nutrition'][key].split('IU')[0]
-                    print(recipe['nutrition'])
                     dict_data.append(recipe['nutrition'])
 
             csv_file =  country + "_recipes_nutrition.csv"
