@@ -1,57 +1,27 @@
-import csv
-import glob
-import os
-import json
-import argparse
+import numpy
+from numpy import genfromtxt
+from sklearn.cluster import DBSCAN
+from sklearn.datasets import make_blobs
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
 
+def recipes_DBSCAN(nutrition_data):
+    db = DBSCAN(eps=20, min_samples=3)
+    db.fit(nutrition_data)
+    y_pred = db.fit_predict(nutrition_data)
+    plt.figure(figsize=(10, 10))
+    plt.scatter(nutrition_data[:, 0], nutrition_data[:, 1], c=y_pred, cmap='Paired')
+    plt.title("Clusters determined by DBSCAN")
+    plt.show()
 
-#def get_recipe_nutrition():
+def recipes_KMean(nutrition_data):
+    print(1)
+
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--country", help="country information", required=True)
-    country = parser.parse_args().country
-    csv_columns = ['Total Fat', 'Saturated Fat', 'Cholesterol', 'Sodium', 'Potassium','Total Carbohydrates', 'Dietary Fiber', 'Protein', 'Sugars', 'Vitamin A', 'Vitamin C', 'Calcium', 'Iron', 'Thiamin', 'Niacin', 'Vitamin B6', 'Magnesium', 'Folate']
-    folders = glob.glob(country + '/*')
-    for folder in folders:
-        files = glob.glob(folder + '/*')
-        for file in files:
-            print(file)
-            with open(file, 'r') as f:
-                recipes = json.load(f)
-            dict_data = []
-            for recipe in recipes:
-                if (len(recipe['nutrition']) > 0):
-                    for key in recipe['nutrition'].keys():
-                        if 'mcg' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('mcg')[0]
-                        elif 'mg' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('mg')[0]
-                        elif 'g' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('g')[0]
-                        elif 'IU' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('IU')[0]
-                    dict_data.append(recipe['nutrition'])
-
-            csv_file =  country + "_recipes_nutrition.csv"
-            if os.path.isfile(csv_file):
-                try:
-                    with open(csv_file, 'a+') as csvfile:
-                        writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-                        for data in dict_data:
-                            writer.writerow(data)
-                except IOError:
-                    print("I/O error")
-            else:
-                try:
-                    with open(csv_file, 'w') as csvfile:
-                        writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-                        writer.writeheader()
-                        for data in dict_data:
-                            writer.writerow(data)
-                except IOError:
-                    print("I/O error")
-
-
+    csv_file = 'Americe_recipes_nutrition.csv'
+    nutrition_data = genfromtxt(csv_file, delimiter=',', skip_header=True)
+    nutrition_data = numpy.delete(nutrition_data, 0, 1)
+    recipes_DBSCAN(nutrition_data)
 
 
 
