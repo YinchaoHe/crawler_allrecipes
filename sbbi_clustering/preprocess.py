@@ -55,7 +55,7 @@ def nutrition_json2cvs(country):
                 for recipe_calo in recipes_calo:
                     calo = []
                     for key in recipe_calo.keys():
-                        calo.append(int(recipe_calo[key]))
+                        calo.append(float(recipe_calo[key]))
                     try:
                         all_recipes_calo[str(calo[0])] = calo[1]
                     except:
@@ -79,13 +79,13 @@ def nutrition_json2cvs(country):
                 if (len(recipe['nutrition']) > 0):
                     for key in recipe['nutrition'].keys():
                         if 'mcg' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('mcg')[0]
+                            recipe['nutrition'][key] = float(recipe['nutrition'][key].split('mcg')[0])
                         elif 'mg' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('mg')[0]
+                            recipe['nutrition'][key] = float(recipe['nutrition'][key].split('mg')[0])
                         elif 'g' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('g')[0]
+                            recipe['nutrition'][key] = float(recipe['nutrition'][key].split('g')[0])
                         elif 'IU' in recipe['nutrition'][key]:
-                            recipe['nutrition'][key] = recipe['nutrition'][key].split('IU')[0]
+                            recipe['nutrition'][key] = float(recipe['nutrition'][key].split('IU')[0])
                     recipe['nutrition']['Recipe_ID'] = recipe['recipe_ID']
                     recipe['nutrition']['calories'] = all_recipes_calo[recipe['recipe_ID']]
                     dict_data.append(recipe['nutrition'])
