@@ -20,11 +20,7 @@ def main():
 
                     'CanadianRecipes':'https://www.allrecipes.com/recipes/17475/world-cuisine/african/main-dishes/',
                     'AustralianandNewZealanderRecipes':'https://www.allrecipes.com/recipes/228/world-cuisine/australian-and-new-zealander/',
-                    'GermanRecipes':'https://www.allrecipes.com/recipes/722/world-cuisine/european/german/',
-                    'SwissRecipes':'https://www.allrecipes.com/recipes/727/world-cuisine/european/swiss/',
-                    'LebaneseRecipes':'https://www.allrecipes.com/recipes/1824/world-cuisine/middle-eastern/lebanese/',
-                    'TurkishRecipes':'https://www.allrecipes.com/recipes/1825/world-cuisine/middle-eastern/turkish/',
-                    'IsraeliRecipes':'https://www.allrecipes.com/recipes/1826/world-cuisine/middle-eastern/israeli/',
+                    'GermanRecipes':'',
     }
     for recipe_info in recipe_infos.keys():
         url = recipe_infos[recipe_info]
