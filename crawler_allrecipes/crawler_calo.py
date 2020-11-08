@@ -2,7 +2,6 @@ import glob
 import json
 import os
 import time
-import urllib
 import urllib.request as req
 import bs4
 
